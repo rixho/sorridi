@@ -1,0 +1,86 @@
+[
+  {
+    "id": "suncoco-31m-1992",
+    "status": "for-sale",
+    "length_m": 31,
+    "year": 1992,
+    "builder": "Lowlands",
+    "guests": 8,
+    "crew": 6,
+    "price": "€4.8M",
+    "images": ["/media/suncoco/main.jpg", "/media/suncoco/1.jpg", "/media/suncoco/2.jpg"],
+    "translations": {
+      "en": {
+        "name": "SUNCOCO",
+        "description": "Impeccable condition with strong charter pedigree.",
+        "highlights": ["Canoe stern", "Sundeck jacuzzi", "Charter pedigree"]
+      },
+      "sq": {
+        "name": "SUNCOCO",
+        "description": "Gjendje e përsosur me histori të fortë charteri.",
+        "highlights": ["Pupë kanoe", "Jacuzzi në kuvertë", "Histori charteri"]
+      },
+      "it": {
+        "name": "SUNCOCO",
+        "description": "Condizioni impeccabili con una forte storia di charter.",
+        "highlights": ["Poppa a canoa", "Jacuzzi sul ponte", "Storia charter"]
+      }
+    }
+  },
+  {
+    "id": "purpose-55m-2017",
+    "status": "for-sale",
+    "length_m": 55,
+    "year": 2017,
+    "builder": "Amels",
+    "guests": 12,
+    "crew": 13,
+    "price": "€48M",
+    "images": ["/media/purpose/main.jpg", "/media/purpose/1.jpg", "/media/purpose/2.jpg"],
+    "translations": {
+      "en": {
+        "name": "PURPOSE",
+        "description": "A modern masterpiece with cinema, gym, and jacuzzi.",
+        "highlights": ["Gym", "Cinema", "Jacuzzi"]
+      },
+      "sq": {
+        "name": "PURPOSE",
+        "description": "Një kryevepër moderne me kinema, palestër dhe jacuzzi.",
+        "highlights": ["Palestër", "Kinema", "Jacuzzi"]
+      },
+      "it": {
+        "name": "PURPOSE",
+        "description": "Un capolavoro moderno con cinema, palestra e jacuzzi.",
+        "highlights": ["Palestra", "Cinema", "Jacuzzi"]
+      }
+    }
+  },
+  {
+    "id": "liberty-70m-2020",
+    "status": "for-charter",
+    "length_m": 70,
+    "year": 2020,
+    "builder": "Feadship",
+    "guests": 14,
+    "crew": 18,
+    "price": "€650K/week",
+    "images": ["/media/liberty/main.jpg", "/media/liberty/1.jpg", "/media/liberty/2.jpg"],
+    "translations": {
+      "en": {
+        "name": "LIBERTY",
+        "description": "A luxury yacht for unforgettable charters worldwide.",
+        "highlights": ["Beach club", "Infinity pool", "Helipad"]
+      },
+      "sq": {
+        "name": "LIBERTY",
+        "description": "Një jaht luksoz për chartera të paharrueshme në të gjithë botën.",
+        "highlights": ["Klub plazhi", "Pishinë infinity", "Helipad"]
+      },
+      "it": {
+        "name": "LIBERTY",
+        "description": "Uno yacht di lusso per charter indimenticabili in tutto il mondo.",
+        "highlights": ["Beach club", "Piscina a sfioro", "Eliporto"]
+      }
+    }
+  }
+]

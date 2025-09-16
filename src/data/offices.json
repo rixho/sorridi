@@ -1,0 +1,26 @@
+[
+  {
+    "id": "monaco",
+    "city": "Monaco",
+    "country": "Monaco",
+    "address": "1 Avenue de la Costa",
+    "phone": "+377 000 000",
+    "services": ["Sales", "Charter", "Management"]
+  },
+  {
+    "id": "london",
+    "city": "London",
+    "country": "UK",
+    "address": "Mayfair",
+    "phone": "+44 000 000",
+    "services": ["Sales", "Charter"]
+  },
+  {
+    "id": "fort-lauderdale",
+    "city": "Fort Lauderdale",
+    "country": "USA",
+    "address": "Las Olas",
+    "phone": "+1 000 000",
+    "services": ["Sales", "Charter", "Crew"]
+  }
+]

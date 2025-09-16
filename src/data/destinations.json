@@ -1,0 +1,112 @@
+[
+  {
+    "id": "caribbean",
+    "title": "Caribbean",
+    "excerpt": "Turquoise waters & trade winds.",
+    "heroImage": "/destinations/caribbean/hero.jpg",
+    "images": [
+      "/destinations/caribbean/hero.jpg",
+      "/destinations/caribbean/1.jpg",
+      "/destinations/caribbean/2.jpg",
+      "/destinations/caribbean/3.jpg"
+    ],
+    "description": "Discover turquoise waters, coral reefs, and hundreds of islands perfect for yacht charters."
+  },
+  {
+    "id": "bahamas",
+    "title": "Bahamas",
+    "excerpt": "Shallow banks & white sand.",
+    "heroImage": "/destinations/bahamas/hero.jpg",
+    "images": [
+      "/destinations/bahamas/hero.jpg",
+      "/destinations/bahamas/1.jpg",
+      "/destinations/bahamas/2.jpg"
+    ],
+    "description": "The Bahamas offers shallow turquoise banks, sandy beaches, and vibrant marine life."
+  },
+  {
+    "id": "mediterranean",
+    "title": "Mediterranean",
+    "excerpt": "French Riviera to Greek isles.",
+    "heroImage": "/destinations/med/hero.jpg",
+    "images": [
+      "/destinations/med/hero.jpg",
+      "/destinations/med/1.jpg",
+      "/destinations/med/2.jpg",
+      "/destinations/med/3.jpg"
+    ],
+    "description": "Cruise from the French Riviera to the Greek Isles, exploring iconic cities and hidden coves."
+  },
+  {
+    "id": "dhermi",
+    "title": "Dhërmi Beach",
+    "excerpt": "Crystal waters & nightlife.",
+    "heroImage": "/destinations/dhermi/hero.jpg",
+    "images": [
+      "/destinations/dhermi/hero.jpg",
+      "/destinations/dhermi/1.jpg",
+      "/destinations/dhermi/2.jpg"
+    ],
+    "description": "Dhërmi is famous for its turquoise waters, pebble beaches, and vibrant nightlife.",
+    "lat": 40.1505,
+    "lng": 19.6408
+  },
+  {
+    "id": "jale",
+    "title": "Jale Beach",
+    "excerpt": "Trendy beach bars & diving.",
+    "heroImage": "/destinations/jale/hero.jpg",
+    "images": [
+      "/destinations/jale/hero.jpg",
+      "/destinations/jale/1.jpg",
+      "/destinations/jale/2.jpg"
+    ],
+    "description": "Jale offers trendy beach bars, crystal-clear waters, and is a hotspot for young travelers.",
+    "lat": 40.0908,
+    "lng": 19.6982
+  },
+  {
+    "id": "ksamil",
+    "title": "Ksamil Islands",
+    "excerpt": "Tropical paradise in Albania.",
+    "heroImage": "/destinations/ksamil/hero.jpg",
+    "images": [
+      "/destinations/ksamil/hero.jpg",
+      "/destinations/ksamil/1.jpg",
+      "/destinations/ksamil/2.jpg",
+      "/destinations/ksamil/3.jpg"
+    ],
+    "description": "The Ksamil Islands are known for their white-sand beaches and Caribbean-like waters, perfect for families.",
+    "lat": 39.7681,
+    "lng": 19.9998
+  },
+  {
+    "id": "sazan",
+    "title": "Sazan Island",
+    "excerpt": "Albania’s hidden military island.",
+    "heroImage": "/destinations/sazan/hero.jpg",
+    "images": [
+      "/destinations/sazan/hero.jpg",
+      "/destinations/sazan/1.jpg",
+      "/destinations/sazan/2.jpg"
+    ],
+    "description": "Sazan Island combines military history with untouched nature and crystal waters.",
+    "lat": 40.4944,
+    "lng": 19.2831
+  },
+  {
+    "id": "karaburun",
+    "title": "Karaburun",
+    "excerpt": "National marine park.",
+    "heroImage": "/destinations/karaburun/hero.jpg",
+    "images": [
+      "/destinations/karaburun/hero.jpg",
+      "/destinations/karaburun/1.jpg",
+      "/destinations/karaburun/2.jpg",
+      "/destinations/karaburun/3.jpg"
+    ],
+    "description": "Karaburun is part of a national marine park with caves, cliffs, and amazing diving spots.",
+    "lat": 40.4053,
+    "lng": 19.3111
+  }
+]
