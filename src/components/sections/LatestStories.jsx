@@ -32,7 +32,7 @@ export default function LatestStories() {
         left: "50%",
         marginLeft: "-50.5vw",
         py: { xs: 8, md: 12 },
-        bgcolor: "#f5f5f5",
+        bgcolor: "#E6E6E6",
         textAlign: "center",
       }}
     >

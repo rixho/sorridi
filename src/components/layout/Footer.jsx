@@ -18,7 +18,7 @@ export default function Footer() {
         width: "100vw",
         left: "50%",
         marginLeft: "-50.5vw",
-        bgcolor: "#0d1b2a",
+        bgcolor: "#141F2F",
         color: "#fff",
         py: { xs: 6, md: 10 },
         px: { xs: 4, md: 10 },

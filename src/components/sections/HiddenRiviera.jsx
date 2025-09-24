@@ -1,6 +1,7 @@
 // src/components/sections/HiddenRiviera.jsx
 import React from "react";
-import { Box, Typography, Grid, Button, Stack } from "@mui/material";
+import { Box, Typography, Grid, Button, Stack, Paper } from "@mui/material";
+import { Link } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
 import DiamondIcon from "@mui/icons-material/Diamond";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
@@ -13,7 +14,7 @@ export default function HiddenRiviera() {
         width: "100vw",
         left: "50%",
         marginLeft: "-50.5vw",
-        bgcolor: "#0d1b2a",
+        bgcolor: "#141F2F",
         py: { xs: 6, md: 10 },
         px: { xs: 2, md: 6 },
         display: "flex",
@@ -68,33 +69,56 @@ export default function HiddenRiviera() {
               journey is curated to perfection.
             </Typography>
 
-            {/* Ikonat */}
+            {/* Ikonat në formë karte */}
             <Stack
               direction={{ xs: "column", sm: "row" }}
               spacing={3}
-              sx={{ mb: 3, textAlign: { xs: "center", sm: "left" } }}
+              sx={{ mb: 3, textAlign: "center" }}
             >
-              <Box>
+              <Paper
+                elevation={3}
+                sx={{
+                  p: 2,
+                  flex: 1,
+                  borderRadius: 2,
+                }}
+              >
                 <StarIcon sx={{ color: "#d4a017", fontSize: 32 }} />
                 <Typography fontWeight={600}>Pristine Destinations</Typography>
                 <Typography variant="body2" color="text.secondary">
                   Unspoiled coves & secret anchors of the Albanian Riviera
                 </Typography>
-              </Box>
-              <Box>
+              </Paper>
+
+              <Paper
+                elevation={3}
+                sx={{
+                  p: 2,
+                  flex: 1,
+                  borderRadius: 2,
+                }}
+              >
                 <DiamondIcon sx={{ color: "#d4a017", fontSize: 32 }} />
                 <Typography fontWeight={600}>Luxury Fleet</Typography>
                 <Typography variant="body2" color="text.secondary">
                   Handpicked yachts with design, comfort & performance
                 </Typography>
-              </Box>
-              <Box>
+              </Paper>
+
+              <Paper
+                elevation={3}
+                sx={{
+                  p: 2,
+                  flex: 1,
+                  borderRadius: 2,
+                }}
+              >
                 <EmojiEventsIcon sx={{ color: "#d4a017", fontSize: 32 }} />
                 <Typography fontWeight={600}>Royal Services</Typography>
                 <Typography variant="body2" color="text.secondary">
                   Handpicked yachts with design, comfort & performance
                 </Typography>
-              </Box>
+              </Paper>
             </Stack>
 
             {/* Butonat */}
@@ -104,6 +128,8 @@ export default function HiddenRiviera() {
               justifyContent={{ xs: "center", md: "flex-start" }}
             >
               <Button
+                component={Link}
+                to="/about"
                 variant="contained"
                 sx={{
                   bgcolor: "#0d1b2a",
@@ -115,6 +141,8 @@ export default function HiddenRiviera() {
                 MORE ABOUT US
               </Button>
               <Button
+                component={Link}
+                to="/destinations"
                 variant="outlined"
                 sx={{
                   borderColor: "#0d1b2a",
@@ -132,7 +160,7 @@ export default function HiddenRiviera() {
           <Grid item xs={12} md={6}>
             <Box
               component="img"
-              src="/media/yacht-riviera.jpg"
+              src="/media/1.jpg"
               alt="Riviera Yacht"
               sx={{
                 width: "100%",

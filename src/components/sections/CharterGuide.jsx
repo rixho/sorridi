@@ -57,7 +57,7 @@ export default function CharterGuide() {
       {/* Zona e errët me foto të fiksuar në ekran */}
       <Box
         sx={{
-          backgroundColor: "#0d1b2a",
+          backgroundColor: "#141F2F",
           height: "50vh", // seksioni plot ekran
           display: "flex",
           alignItems: "center",
@@ -94,7 +94,7 @@ export default function CharterGuide() {
         <Button
           variant="contained"
           sx={{
-            bgcolor: "#0d1b2a",
+            bgcolor: "#141F2F",
             color: "#fff",
             px: 5,
             py: 1.5,
