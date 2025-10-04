@@ -9,6 +9,8 @@ import { queryClient } from "./app/queryClient";
 import { SeoProvider } from "./app/seo";
 import "./app/i18n";
 import "./index.css";
+import "leaflet/dist/leaflet.css";
+
 
 function Root() {
   const [mode, setMode] = React.useState(

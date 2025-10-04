@@ -16,8 +16,8 @@ import YachtCard from "../YachtCard";
 export default function FeaturedYachts() {
   const [tab, setTab] = React.useState("charter");
 
-  const sale = yachts.filter((y) => y.status === "for-sale").slice(0, 4);
-  const charter = yachts.filter((y) => y.status === "for-charter").slice(0, 4);
+  const sale = yachts.filter((y) => y.status === "for-sale").slice(0, 2);
+  const charter = yachts.filter((y) => y.status === "for-charter").slice(0, 2);
 
   const items = tab === "buy" ? sale : charter;
   const viewAllLink =

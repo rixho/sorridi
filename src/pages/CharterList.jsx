@@ -1,109 +1,59 @@
+// src/pages/CharterList.jsx
 import React from "react";
-import { Grid, Box, Typography, Stack, Container, Button } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
-import yachtsData from "../data/yachts.json";
-import YachtCard from "../components/YachtCard";
-import SortBar from "../components/Filters/SortBar";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
-import destinations from "../data/destinations.json"; // destinacionet shqiptare
-
-// Custom Leaflet icon
-const customIcon = new L.Icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
+import { Box, Typography, Container } from "@mui/material";
+import Hero from "../components/charter/Hero";
+import CharterYachts from "../components/charter/CharterYachts";
+import DestinationsCarousel from "../components/destinations/DestinationsCarousel";
+import DestinationsStrip from "../components/charter/DestinationsStrip";
+import DiscoverAlbania from "../components/charter/DiscoverAlbania";
 
 export default function CharterList() {
-  const [items, setItems] = React.useState([]);
-  const [sort, setSort] = React.useState("newest");
-  const navigate = useNavigate();
-
-  const applySort = (arr, s) => {
-    const a = [...arr];
-    switch (s) {
-      case "length_desc":
-        return a.sort((x, y) => (y.length_m || 0) - (x.length_m || 0));
-      case "length_asc":
-        return a.sort((x, y) => (x.length_m || 0) - (y.length_m || 0));
-      case "year_desc":
-        return a.sort((x, y) => (y.year || 0) - (x.year || 0));
-      case "year_asc":
-        return a.sort((x, y) => (x.year || 0) - (y.year || 0));
-      default:
-        return a;
-    }
-  };
-
-  React.useEffect(() => {
-    const out = yachtsData.filter((y) => y.status === "for-charter");
-    setItems(applySort(out, sort));
-  }, [sort]);
-
   return (
     <Box>
-      <Typography variant="h4" sx={{ mb: 2 }}>
-        Yachts for Charter
-      </Typography>
+      {/* Hero Section */}
+      <Hero />
 
-      <Stack direction="row" alignItems="center" justifyContent="flex-end" sx={{ mb: 1 }}>
-        <SortBar value={sort} onChange={setSort} />
-      </Stack>
-
-      <Grid container spacing={2} sx={{ mt: 1 }}>
-        {items.map((y) => (
-          <Grid key={y.id} item xs={12} sm={6} md={4}>
-            <YachtCard yacht={y} />
-          </Grid>
-        ))}
-      </Grid>
-
-      {/* Harta e destinacioneve shqiptare */}
-      <Container sx={{ mt: 6 }}>
-        <Typography variant="h5" gutterBottom>
-          Explore Destinations in Albania
+      {/* Text Section */}
+      <Container
+        maxWidth="md"
+        sx={{
+          py: { xs: 6, md: 10 },
+          textAlign: "center",
+        }}
+      >
+        <Typography
+          variant="h5"
+          fontWeight={700}
+          sx={{
+            mb: 2,
+            color: "#0d1b2a",
+            textTransform: "uppercase",
+            letterSpacing: "1px",
+          }}
+        >
+          Set Sail on Your Perfect Albanian Charter Escape
         </Typography>
-        <Box sx={{ height: 400, borderRadius: 2, overflow: "hidden" }}>
-          <MapContainer
-            center={[40.1, 19.7]}
-            zoom={8}
-            style={{ height: "100%", width: "100%" }}
-          >
-            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            {destinations
-              .filter((d) => typeof d.lat === "number" && typeof d.lng === "number")
-              .map((d, i) => (
-                <Marker
-                  key={i}
-                  position={[d.lat, d.lng]}
-                  icon={customIcon}
-                  eventHandlers={{
-                    click: () => navigate(`/destinations/${d.id}`), // ridrejton direkt
-                  }}
-                >
-                  <Popup>
-                    <Typography variant="subtitle1" fontWeight={600}>
-                      {d.title}
-                    </Typography>
-                    <Button
-                      size="small"
-                      component={Link}
-                      to={`/destinations/${d.id}`}
-                    >
-                      More info
-                    </Button>
-                  </Popup>
-                </Marker>
-              ))}
-          </MapContainer>
-        </Box>
+
+        <Typography
+          variant="body1"
+          sx={{
+            color: "#333",
+            fontSize: { xs: "1rem", md: "1.15rem" },
+            lineHeight: 1.8,
+          }}
+        >
+          Discover hand-picked yachts and tailor-made itineraries along Albania’s
+          stunning coastline and nearby Mediterranean gems. Whether you dream of
+          a luxurious week at sea or a single unforgettable day trip, our expert
+          brokers curate every detail—from yacht selection to personalized route
+          planning—to create the charter vacation you’ve always imagined.
+        </Typography>
       </Container>
+      
+      <CharterYachts />
+       <DestinationsCarousel />
+       <DestinationsStrip />
+       <DiscoverAlbania />
     </Box>
   );
 }

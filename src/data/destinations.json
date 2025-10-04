@@ -1,112 +1,160 @@
 [
   {
-    "id": "caribbean",
-    "title": "Caribbean",
-    "excerpt": "Turquoise waters & trade winds.",
-    "heroImage": "/destinations/caribbean/hero.jpg",
-    "images": [
-      "/destinations/caribbean/hero.jpg",
-      "/destinations/caribbean/1.jpg",
-      "/destinations/caribbean/2.jpg",
-      "/destinations/caribbean/3.jpg"
-    ],
-    "description": "Discover turquoise waters, coral reefs, and hundreds of islands perfect for yacht charters."
-  },
-  {
-    "id": "bahamas",
-    "title": "Bahamas",
-    "excerpt": "Shallow banks & white sand.",
-    "heroImage": "/destinations/bahamas/hero.jpg",
-    "images": [
-      "/destinations/bahamas/hero.jpg",
-      "/destinations/bahamas/1.jpg",
-      "/destinations/bahamas/2.jpg"
-    ],
-    "description": "The Bahamas offers shallow turquoise banks, sandy beaches, and vibrant marine life."
-  },
-  {
-    "id": "mediterranean",
-    "title": "Mediterranean",
-    "excerpt": "French Riviera to Greek isles.",
-    "heroImage": "/destinations/med/hero.jpg",
-    "images": [
-      "/destinations/med/hero.jpg",
-      "/destinations/med/1.jpg",
-      "/destinations/med/2.jpg",
-      "/destinations/med/3.jpg"
-    ],
-    "description": "Cruise from the French Riviera to the Greek Isles, exploring iconic cities and hidden coves."
-  },
-  {
-    "id": "dhermi",
-    "title": "Dhërmi Beach",
-    "excerpt": "Crystal waters & nightlife.",
-    "heroImage": "/destinations/dhermi/hero.jpg",
-    "images": [
-      "/destinations/dhermi/hero.jpg",
-      "/destinations/dhermi/1.jpg",
-      "/destinations/dhermi/2.jpg"
-    ],
-    "description": "Dhërmi is famous for its turquoise waters, pebble beaches, and vibrant nightlife.",
-    "lat": 40.1505,
-    "lng": 19.6408
-  },
-  {
-    "id": "jale",
-    "title": "Jale Beach",
-    "excerpt": "Trendy beach bars & diving.",
-    "heroImage": "/destinations/jale/hero.jpg",
-    "images": [
-      "/destinations/jale/hero.jpg",
-      "/destinations/jale/1.jpg",
-      "/destinations/jale/2.jpg"
-    ],
-    "description": "Jale offers trendy beach bars, crystal-clear waters, and is a hotspot for young travelers.",
-    "lat": 40.0908,
-    "lng": 19.6982
-  },
-  {
-    "id": "ksamil",
-    "title": "Ksamil Islands",
-    "excerpt": "Tropical paradise in Albania.",
-    "heroImage": "/destinations/ksamil/hero.jpg",
-    "images": [
-      "/destinations/ksamil/hero.jpg",
-      "/destinations/ksamil/1.jpg",
-      "/destinations/ksamil/2.jpg",
-      "/destinations/ksamil/3.jpg"
-    ],
-    "description": "The Ksamil Islands are known for their white-sand beaches and Caribbean-like waters, perfect for families.",
-    "lat": 39.7681,
-    "lng": 19.9998
-  },
-  {
-    "id": "sazan",
-    "title": "Sazan Island",
-    "excerpt": "Albania’s hidden military island.",
-    "heroImage": "/destinations/sazan/hero.jpg",
-    "images": [
-      "/destinations/sazan/hero.jpg",
-      "/destinations/sazan/1.jpg",
-      "/destinations/sazan/2.jpg"
-    ],
-    "description": "Sazan Island combines military history with untouched nature and crystal waters.",
-    "lat": 40.4944,
-    "lng": 19.2831
-  },
-  {
     "id": "karaburun",
-    "title": "Karaburun",
-    "excerpt": "National marine park.",
+    "title": "Karaburun Peninsula",
+    "excerpt": "Hidden bays & dramatic cliffs.",
     "heroImage": "/destinations/karaburun/hero.jpg",
     "images": [
       "/destinations/karaburun/hero.jpg",
       "/destinations/karaburun/1.jpg",
-      "/destinations/karaburun/2.jpg",
-      "/destinations/karaburun/3.jpg"
+      "/destinations/karaburun/2.jpg"
     ],
-    "description": "Karaburun is part of a national marine park with caves, cliffs, and amazing diving spots.",
-    "lat": 40.4053,
-    "lng": 19.3111
+    "description": "Sail into the wild beauty of Karaburun, Albania's only peninsula, where hidden bays like Shën Jani, Shën Vasili, and Shëngjergji reveal untouched waters and dramatic coastal cliffs.",
+    "lat": 40.4003,
+    "lng": 19.3561
+  },
+  {
+    "id": "himare",
+    "title": "Himarë",
+    "excerpt": "Beaches & vibrant nightlife.",
+    "heroImage": "/destinations/himare/hero.jpg",
+    "images": [
+      "/destinations/himare/hero.jpg",
+      "/destinations/himare/1.jpg",
+      "/destinations/himare/2.jpg"
+    ],
+    "description": "Himarë is a blend of Riviera glamour and authentic Albanian heritage. Its golden beaches, lively promenade, and traditional tavernas make it the beating heart of the southern coast.",
+    "lat": 40.102,
+    "lng": 19.745
+  },
+  {
+    "id": "filikur",
+    "title": "Filikur",
+    "excerpt": "Secluded hidden cove.",
+    "heroImage": "/destinations/filikur/hero.jpg",
+    "images": [
+      "/destinations/filikur/hero.jpg",
+      "/destinations/filikur/1.jpg"
+    ],
+    "description": "Accessible only by yacht, Filikur is one of the Riviera's most secluded coves. Protected by cliffs and lush greenery, it offers crystalline waters and total tranquility.",
+    "lat": 40.0905,
+    "lng": 19.7300
+  },
+  {
+    "id": "aquarium",
+    "title": "Aquarium Bay",
+    "excerpt": "Crystal waters & marine life.",
+    "heroImage": "/destinations/aquarium/hero.jpg",
+    "images": [
+      "/destinations/aquarium/hero.jpg",
+      "/destinations/aquarium/1.jpg"
+    ],
+    "description": "Aquarium Bay lives up to its name with crystal-clear waters rich in marine life, making it one of the best snorkeling and diving spots in Albania.",
+    "lat": 40.094,
+    "lng": 19.736
+  },
+  {
+    "id": "gjipe",
+    "title": "Gjipe Beach",
+    "excerpt": "Beach between canyon cliffs.",
+    "heroImage": "/destinations/gjipe/hero.jpg",
+    "images": [
+      "/destinations/gjipe/hero.jpg",
+      "/destinations/gjipe/1.jpg"
+    ],
+    "description": "Gjipe Beach is tucked between towering canyon cliffs, offering soft sands, wild scenery, and deep blue waters — one of Albania's most iconic spots.",
+    "lat": 40.1203,
+    "lng": 19.675
+  },
+  {
+    "id": "dhermi",
+    "title": "Dhërmi",
+    "excerpt": "Pebble beaches & lively scene.",
+    "heroImage": "/destinations/dhermi/hero.jpg",
+    "images": [
+      "/destinations/dhermi/hero.jpg",
+      "/destinations/dhermi/1.jpg"
+    ],
+    "description": "Dhërmi is famous for its white-pebble beaches, turquoise waters, and vibrant summer atmosphere — a balance of nightlife, luxury, and tradition.",
+    "lat": 40.1505,
+    "lng": 19.6408
+  },
+  {
+    "id": "palase",
+    "title": "Palasë",
+    "excerpt": "Long coastline & turquoise waters.",
+    "heroImage": "/destinations/palase/hero.jpg",
+    "images": [
+      "/destinations/palase/hero.jpg",
+      "/destinations/palase/1.jpg"
+    ],
+    "description": "Palasë boasts one of the longest stretches of coastline in Albania, offering dazzling turquoise waters and endless white sands.",
+    "lat": 40.1817,
+    "lng": 19.6392
+  },
+  {
+    "id": "bunec",
+    "title": "Bunec",
+    "excerpt": "Secluded bay & sunsets.",
+    "heroImage": "/destinations/bunec/hero.jpg",
+    "images": [
+      "/destinations/bunec/hero.jpg",
+      "/destinations/bunec/1.jpg"
+    ],
+    "description": "Bunec is a small bay south of Himarë, known for its quiet beauty and striking sunsets — perfect for ending the day in tranquility.",
+    "lat": 40.0308,
+    "lng": 19.85
+  },
+  {
+    "id": "krorez",
+    "title": "Krorez",
+    "excerpt": "Golden sands & privacy.",
+    "heroImage": "/destinations/krorez/hero.jpg",
+    "images": [
+      "/destinations/krorez/hero.jpg",
+      "/destinations/krorez/1.jpg"
+    ],
+    "description": "Krorez is one of the Riviera's most beautiful beaches, accessible only by sea, with crystal-clear waters and unspoiled nature.",
+    "lat": 40.033,
+    "lng": 19.873
+  },
+  {
+    "id": "kakome",
+    "title": "Kakome",
+    "excerpt": "Sheltered anchorage & calm waters.",
+    "heroImage": "/destinations/kakome/hero.jpg",
+    "images": [
+      "/destinations/kakome/hero.jpg",
+      "/destinations/kakome/1.jpg"
+    ],
+    "description": "Kakome Bay combines natural charm with sheltered anchorage, framed by untouched hills and calm waters.",
+    "lat": 39.962,
+    "lng": 19.939
+  },
+  {
+    "id": "ksamil",
+    "title": "Ksamil",
+    "excerpt": "Islets & lagoons.",
+    "heroImage": "/destinations/ksamil/hero.jpg",
+    "images": [
+      "/destinations/ksamil/hero.jpg",
+      "/destinations/ksamil/1.jpg"
+    ],
+    "description": "Ksamil is Albania's crown jewel, famous for its sandy islets and turquoise lagoons, often compared to the Caribbean.",
+    "lat": 39.7681,
+    "lng": 19.9998
+  },
+  {
+    "id": "tongo",
+    "title": "Tongo Island",
+    "excerpt": "Wild private island.",
+    "heroImage": "/destinations/tongo/hero.jpg",
+    "images": [
+      "/destinations/tongo/hero.jpg",
+      "/destinations/tongo/1.jpg"
+    ],
+    "description": "Tongo Island near Ksamil offers rocky shores, underwater life, and unspoiled surroundings — a castaway-style experience.",
+    "lat": 39.752,
+    "lng": 20.01
   }
 ]

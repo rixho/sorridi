@@ -13,6 +13,7 @@ import ArticleDetails from "../pages/ArticleDetails";
 import Favorites from "../pages/Favorites";
 import AboutUs from "../pages/AboutUs";    
 import Contact from "../pages/Contact";  
+import PriveService from "../pages/PriveService";  
 
 export default function router(layoutProps) {
   return createBrowserRouter([
@@ -32,6 +33,8 @@ export default function router(layoutProps) {
         { path: "favorites", element: <Favorites /> },
         { path: "about", element: <AboutUs /> },
         { path: "contact", element: <Contact /> },
+        { path: "prive-service", element: <PriveService /> },
+        
       ],
     },
   ]);

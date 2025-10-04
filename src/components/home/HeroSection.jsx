@@ -7,12 +7,15 @@ export default function HeroSection() {
     <Box
       sx={{
         position: "relative",
-        width: "100%",
-        height: { xs: "60vh", md: "90vh" }, // responsive
+        width: "100vw",
+        left: "50%",
+        marginLeft: "-50.5vw",
+        mt: -6,
+        height: { xs: 300, md: 700 },
         overflow: "hidden",
       }}
     >
-      {/* Video full width */}
+      {/* Background Video */}
       <video
         autoPlay
         muted
@@ -36,7 +39,7 @@ export default function HeroSection() {
           left: 0,
           width: "100%",
           height: "100%",
-          background: "rgba(0,0,0,0.3)", // filter
+          background: "rgba(0,0,0,0.3)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -48,12 +51,11 @@ export default function HeroSection() {
       >
         {/* Headline */}
         <Typography
-          variant="h2"
+          variant="h3"
           fontWeight={700}
           sx={{
             mb: 1,
             textShadow: "0px 2px 6px rgba(0,0,0,0.8)",
-            fontSize: { xs: "2rem", md: "3.5rem" }, // responsive font size
           }}
         >
           Explore the World’s Finest Yachts
@@ -61,18 +63,18 @@ export default function HeroSection() {
 
         {/* Subheadline */}
         <Typography
-          variant="h6"
+          variant="subtitle1"
           sx={{
             mb: 4,
             fontWeight: 400,
             textShadow: "0px 1px 4px rgba(0,0,0,0.6)",
-            fontSize: { xs: "1rem", md: "1.25rem" }, // më e vogël se headline
+            fontSize: { xs: "0.9rem", md: "1.1rem" },
           }}
         >
           Luxury in the Last Uncharted Mediterranean
         </Typography>
 
-        {/* Buttons */}
+        {/* CTA Buttons */}
         <Grid container spacing={2} justifyContent="center">
           <Grid item>
             <Button

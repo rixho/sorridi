@@ -39,7 +39,8 @@ export default function Header({ mode, setMode }) {
   const navLinks = [
     { to: "/yachts-for-sale", label: t("nav.buy") },
     { to: "/yachts-for-charter", label: t("nav.charter") },
-    { to: "/destinations", label: t("nav.destinations") },
+    { to: "/destinations", label: t("nav.destinations") },  
+    { to: "/prive-service", label: t("nav.priveservice") },
     // { to: "/offices", label: t("nav.offices") },
     { to: "/articles", label: t("nav.news") },
     // { to: "/favorites", label: t("nav.favorites") },

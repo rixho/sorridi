@@ -14,8 +14,8 @@ import { useTranslation } from "react-i18next";
 
 export default function YachtCard({ yacht, big = false }) {
   const { i18n } = useTranslation();
-  const lang = i18n.language;
-  const tData = yacht.translations[lang] || yacht.translations["en"];
+  // const lang = i18n.language;
+  // const tData = yacht.translations[lang] || yacht.translations["en"];
 
   return (
     <Card
@@ -43,7 +43,7 @@ export default function YachtCard({ yacht, big = false }) {
         <CardMedia
           component="img"
           image={yacht.images[0]}
-          alt={tData.name}
+          alt={yacht.name}
           sx={{
             position: "absolute",
             top: 0,
@@ -63,7 +63,7 @@ export default function YachtCard({ yacht, big = false }) {
           fontWeight={700}
           sx={{ textTransform: "uppercase" }}
         >
-          {tData.name}
+          {yacht.name}
         </Typography>
         <Typography
           variant="subtitle2"

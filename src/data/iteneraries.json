@@ -1,0 +1,106 @@
+[
+  {
+    "id": "karaburun-escape",
+    "title": "Karaburun Peninsula",
+    "bestTime": "May – September",
+    "heroImage": "/destinations/karaburun/hero.jpg",
+    "description": "Immerse yourself in the raw beauty of Albania’s Karaburun Peninsula, where secluded coves, sheer cliffs, and turquoise waters create a world apart.",
+    "locations": [
+      {
+        "id": "shen-jani",
+        "title": "Shën Jani Bay",
+        "image": "/destinations/karaburun/hero.jpg",
+        "text": "On a yacht charter to Shën Jani, pure seclusion meets untamed beauty. Glide over shimmering turquoise water and drop anchor in a bay framed by dramatic limestone cliffs and lush Mediterranean vegetation.\n\nSpend the day swimming in crystal-clear shallows or snorkeling around hidden rock formations alive with marine life. With no roads or crowds, Shën Jani offers a sense of total escape, where the only soundtrack is the sea itself. End your day with a serene sunset on deck, savoring the feeling of untouched nature that lingers long after you leave.",
+        "options": "Options for daily or weekly yacht charter"
+      },
+      {
+        "id": "shen-vasili",
+        "title": "Shën Vasili Bay",
+        "image": "/destinations/karaburun/hero.jpg",
+        "text": "Set against rugged coastal scenery, Shën Vasili Bay is an oasis of calm and natural splendour. Approach by yacht to discover translucent waters that shimmer from emerald to deep sapphire, ideal for leisurely swims or paddleboarding in complete privacy.\n\nTake a tender ashore to explore small pebble beaches and the fragrant coastal flora that perfumes the air. With its quiet atmosphere and dramatic surroundings, Shën Vasili is perfect for a peaceful afternoon or an overnight stay under a sky blazing with stars — an unforgettable retreat for those seeking tranquility.",
+        "options": "Options for daily or weekly yacht charter"
+      },
+      {
+        "id": "shengjergji",
+        "title": "Shëngjergji Bay",
+        "image": "/destinations/karaburun/hero.jpg",
+        "text": "Shëngjergji Bay captivates with wild, untouched landscapes and a raw Mediterranean spirit. Entering by yacht, you’re greeted by towering cliffs and hidden grottoes where the sunlight plays on the water in shades of turquoise and cobalt.\n\nThe bay invites both relaxation and adventure: dive into deep, clear waters, explore rocky inlets by kayak, or simply soak up the stillness on your yacht’s deck. For intrepid travelers, Shëngjergji delivers a yacht-charter experience that feels secret and rare, promising memories as vivid as its crystalline seas.",
+        "options": "Options for daily or weekly yacht charter"
+      }
+    ],
+    "mapMarkers": [
+      { "lat": 40.398, "lng": 19.345, "title": "Shën Jani" },
+      { "lat": 40.405, "lng": 19.355, "title": "Shën Vasili" },
+      { "lat": 40.410, "lng": 19.360, "title": "Shëngjergji" }
+    ],
+    "cta": {
+      "title": "Plan Your Karaburun Escape",
+      "subtitle": "Choose a private yacht itinerary — daily or weekly — and uncover Albania's most secluded bays.",
+      "button": "Plan Your Voyage"
+    }
+  },
+  {
+    "id": "himare-filikur-journey",
+    "title": "Himarë & Filikur Journey",
+    "bestTime": "June – September",
+    "heroImage": "/destinations/karaburun/hero.jpg",
+    "description": "Experience the vibrant culture of Himarë and the untouched serenity of Filikur Bay — a journey that blends energy and seclusion.",
+    "locations": [
+      {
+        "id": "himare",
+        "title": "Himarë",
+        "image": "/itineraries/himare/himare.jpg",
+        "text": "Himarë is a blend of Riviera glamour and authentic Albanian heritage. Golden beaches, lively promenades, and traditional tavernas make it the beating heart of the coast.\n\nStroll along the seafront lined with cafes, explore the old town’s cobbled alleys, or simply relax on sun-soaked beaches. Himarë delivers a balance of energy and authenticity, making it a highlight for travelers who want both vibrancy and culture.",
+        "options": "Perfect for day or weekend yacht charters"
+      },
+      {
+        "id": "filikur",
+        "title": "Filikur Bay",
+        "image": "/itineraries/filikur/filikur.jpg",
+        "text": "Accessible only by yacht, Filikur is one of the Riviera's most secluded coves. Protected by cliffs and lush greenery, it offers crystalline waters and complete tranquility.\n\nAnchor offshore and spend the day swimming in turquoise shallows or snorkeling among schools of colorful fish. With no road access and no crowds, Filikur Bay embodies exclusivity and privacy, making it the ultimate escape for yacht lovers.",
+        "options": "Ideal for private yacht retreats"
+      }
+    ],
+    "mapMarkers": [
+      { "lat": 40.102, "lng": 19.745, "title": "Himarë" },
+      { "lat": 40.0905, "lng": 19.7300, "title": "Filikur" }
+    ],
+    "cta": {
+      "title": "Sail Himarë & Filikur",
+      "subtitle": "Combine the vibrant energy of Himarë with the untouched seclusion of Filikur for an unforgettable yacht escape.",
+      "button": "Start Your Journey"
+    }
+  },
+  {
+    "id": "ksamil-tongo-paradise",
+    "title": "Ksamil & Tongo Paradise",
+    "bestTime": "May – October",
+    "heroImage": "/destinations/karaburun/hero.jpg",
+    "description": "Discover Ksamil’s turquoise lagoons and the untouched charm of Tongo Island — a pairing of elegance and wilderness.",
+    "locations": [
+      {
+        "id": "ksamil",
+        "title": "Ksamil",
+        "image": "/itineraries/ksamil/ksamil.jpg",
+        "text": "Ksamil is Albania's crown jewel, famous for its sandy islets and turquoise lagoons. Often compared to Caribbean beaches, it’s perfect for relaxation and exploration.\n\nFamilies love Ksamil for its calm waters and easy access to nearby islets by small boat. Whether you want to sunbathe, swim, or dine at beachfront restaurants, Ksamil offers something for everyone, making it a must-see in the Riviera.",
+        "options": "Family-friendly yacht charters available"
+      },
+      {
+        "id": "tongo",
+        "title": "Tongo Island",
+        "image": "/itineraries/tongo/tongo.jpg",
+        "text": "Tongo Island offers rocky shores, rich underwater life, and unspoiled surroundings — a castaway-style adventure for those seeking true privacy.\n\nAccessible only by yacht, it’s a destination for snorkeling, diving, and complete relaxation away from the crowds. Tongo embodies the wild, untouched spirit of the Ionian coast — a sanctuary for those wanting to disconnect fully and embrace nature.",
+        "options": "Private day trips or overnight stays by yacht"
+      }
+    ],
+    "mapMarkers": [
+      { "lat": 39.7681, "lng": 19.9998, "title": "Ksamil" },
+      { "lat": 39.752, "lng": 20.01, "title": "Tongo Island" }
+    ],
+    "cta": {
+      "title": "Plan Your Ksamil & Tongo Escape",
+      "subtitle": "From turquoise lagoons to wild island adventures, this itinerary blends luxury with untouched beauty.",
+      "button": "Plan Your Voyage"
+    }
+  }
+]

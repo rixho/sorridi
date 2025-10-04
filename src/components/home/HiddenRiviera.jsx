@@ -15,8 +15,8 @@ export default function HiddenRiviera() {
         left: "50%",
         marginLeft: "-50.5vw",
         bgcolor: "#141F2F",
-        py: { xs: 6, md: 10 },
-        px: { xs: 2, md: 6 },
+        py: { xs: 6, md: 8 }, // më i vogël që të mos dalë jashtë
+        px: { xs: 2, md: 3 },
         display: "flex",
         justifyContent: "center",
       }}
@@ -25,10 +25,10 @@ export default function HiddenRiviera() {
         sx={{
           bgcolor: "#fff",
           borderRadius: 2,
-          p: { xs: 3, md: 6 },
-          maxWidth: "1200px",
-          width: "100%",
-          boxShadow: "0 8px 20px rgba(0,0,0,0.25)",
+          p: { xs: 3, md: 5 }, // zvogëluar
+          width: "92%",
+          maxWidth: "1400px",
+          boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
         }}
       >
         <Grid
@@ -40,12 +40,12 @@ export default function HiddenRiviera() {
           {/* Teksti Majtas */}
           <Grid item xs={12} md={6}>
             <Typography
-              variant="h5"
+              variant="h4"
               fontWeight={800}
               sx={{
                 mb: 2,
                 color: "black",
-                fontSize: { xs: "1.4rem", md: "1.8rem" },
+                fontSize: { xs: "1.4rem", md: "1.9rem" },
                 textAlign: { xs: "center", md: "left" },
               }}
             >
@@ -59,7 +59,8 @@ export default function HiddenRiviera() {
               sx={{
                 mb: 3,
                 textAlign: { xs: "center", md: "left" },
-                fontSize: { xs: "0.9rem", md: "1rem" },
+                fontSize: { xs: "0.95rem", md: "1.05rem" },
+                lineHeight: 1.7,
               }}
             >
               From the turquoise waters of Saranda to the dramatic cliffs of
@@ -72,49 +73,34 @@ export default function HiddenRiviera() {
             {/* Ikonat në formë karte */}
             <Stack
               direction={{ xs: "column", sm: "row" }}
-              spacing={3}
+              spacing={2}
               sx={{ mb: 3, textAlign: "center" }}
             >
-              <Paper
-                elevation={3}
-                sx={{
-                  p: 2,
-                  flex: 1,
-                  borderRadius: 2,
-                }}
-              >
-                <StarIcon sx={{ color: "#d4a017", fontSize: 32 }} />
-                <Typography fontWeight={600}>Pristine Destinations</Typography>
+              <Paper elevation={2} sx={{ p: 2, flex: 1, borderRadius: 2 }}>
+                <StarIcon sx={{ color: "#d4a017", fontSize: 30 }} />
+                <Typography fontWeight={600} mt={1}>
+                  Pristine Destinations
+                </Typography>
                 <Typography variant="body2" color="text.secondary">
                   Unspoiled coves & secret anchors of the Albanian Riviera
                 </Typography>
               </Paper>
 
-              <Paper
-                elevation={3}
-                sx={{
-                  p: 2,
-                  flex: 1,
-                  borderRadius: 2,
-                }}
-              >
-                <DiamondIcon sx={{ color: "#d4a017", fontSize: 32 }} />
-                <Typography fontWeight={600}>Luxury Fleet</Typography>
+              <Paper elevation={2} sx={{ p: 2, flex: 1, borderRadius: 2 }}>
+                <DiamondIcon sx={{ color: "#d4a017", fontSize: 30 }} />
+                <Typography fontWeight={600} mt={1}>
+                  Luxury Fleet
+                </Typography>
                 <Typography variant="body2" color="text.secondary">
                   Handpicked yachts with design, comfort & performance
                 </Typography>
               </Paper>
 
-              <Paper
-                elevation={3}
-                sx={{
-                  p: 2,
-                  flex: 1,
-                  borderRadius: 2,
-                }}
-              >
-                <EmojiEventsIcon sx={{ color: "#d4a017", fontSize: 32 }} />
-                <Typography fontWeight={600}>Royal Services</Typography>
+              <Paper elevation={2} sx={{ p: 2, flex: 1, borderRadius: 2 }}>
+                <EmojiEventsIcon sx={{ color: "#d4a017", fontSize: 30 }} />
+                <Typography fontWeight={600} mt={1}>
+                  Royal Services
+                </Typography>
                 <Typography variant="body2" color="text.secondary">
                   Handpicked yachts with design, comfort & performance
                 </Typography>
@@ -135,6 +121,7 @@ export default function HiddenRiviera() {
                   bgcolor: "#0d1b2a",
                   color: "#fff",
                   px: 3,
+                  fontWeight: 600,
                   "&:hover": { bgcolor: "#16324f" },
                 }}
               >
@@ -148,6 +135,7 @@ export default function HiddenRiviera() {
                   borderColor: "#0d1b2a",
                   color: "#0d1b2a",
                   px: 3,
+                  fontWeight: 600,
                   "&:hover": { bgcolor: "#0d1b2a", color: "#fff" },
                 }}
               >
@@ -164,7 +152,7 @@ export default function HiddenRiviera() {
               alt="Riviera Yacht"
               sx={{
                 width: "100%",
-                maxHeight: { xs: 280, md: 400 },
+                maxHeight: { xs: 250, md: 380 }, // kufizim që të mos e zmadhojë seksionin
                 objectFit: "cover",
                 borderRadius: 2,
                 boxShadow: "0 6px 16px rgba(0,0,0,0.25)",

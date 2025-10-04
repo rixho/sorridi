@@ -20,6 +20,7 @@ export default function Footer() {
         marginLeft: "-50.5vw",
         bgcolor: "#141F2F",
         color: "#fff",
+        mt: -6,
         py: { xs: 6, md: 10 },
         px: { xs: 4, md: 10 },
       }}

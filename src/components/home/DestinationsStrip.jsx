@@ -68,14 +68,19 @@ export default function DestinationsStrip() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                justifyContent: "center",
+                justifyContent: "flex-end", // nga qendra → poshtë
                 textAlign: "center",
                 color: "#fff",
                 position: "relative",
                 cursor: "pointer",
                 overflow: "hidden",
-                borderTop: { xs: idx !== 0 ? "1px solid rgba(255,255,255,0.3)" : "none", md: "none" },
-                borderLeft: { md: idx !== 0 ? "1px solid rgba(255,255,255,0.3)" : "none" },
+                borderTop: {
+                  xs: idx !== 0 ? "1px solid rgba(255,255,255,0.3)" : "none",
+                  md: "none",
+                },
+                borderLeft: {
+                  md: idx !== 0 ? "1px solid rgba(255,255,255,0.3)" : "none",
+                },
               }}
             >
               {/* Background */}
@@ -94,6 +99,7 @@ export default function DestinationsStrip() {
                   transform: hovered === f.id ? "scale(1.05)" : "scale(1)",
                 }}
               />
+
               {/* Overlay text */}
               <Box
                 sx={{
@@ -103,6 +109,7 @@ export default function DestinationsStrip() {
                   bgcolor: "rgba(0,0,0,0.35)",
                   borderRadius: 2,
                   mx: { xs: 2, md: 0 },
+                  mb: { xs: 4, md: 6 }, // hapësirë poshtë
                 }}
               >
                 <Typography
