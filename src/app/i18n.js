@@ -16,7 +16,8 @@ i18n.use(initReactI18next).init({
           favorites: "Favorites",
           about: "About Us",
           contact: "Contact",
-          priveservice: "Prive Service"
+          priveservice: "Prive Service",
+          partnership: "Partnership"   // 🔹 changed
         },
         hero_title: "Explore the World's Finest Yachts",
         featured: "Featured Yachts",
@@ -32,9 +33,10 @@ i18n.use(initReactI18next).init({
           offices: "Zyra",
           news: "Lajme",
           favorites: "Të preferuarat",
-          about: "About Us",
-          contact: "Contact",
-          priveservice: "Prive Service"
+          about: "Rreth Nesh",
+          contact: "Kontakti",
+          priveservice: "Shërbim Privat",
+          partnership: "Partneritet"   // 🔹 changed
         },
         hero_title: "Eksploro Jahtet më të Mirë në Botë",
         featured: "Jahtet e Veçuar",
@@ -50,9 +52,10 @@ i18n.use(initReactI18next).init({
           offices: "Uffici",
           news: "Notizie",
           favorites: "Preferiti",
-          about: "About Us",
-          contact: "Contact",
-          priveservice: "Prive Service"
+          about: "Chi Siamo",
+          contact: "Contatti",
+          priveservice: "Servizio Privato",
+          partnership: "Partnership"   // 🔹 changed
         },
         hero_title: "Esplora gli yacht più belli del mondo",
         featured: "Yacht in Evidenza",

@@ -14,6 +14,7 @@ import Favorites from "../pages/Favorites";
 import AboutUs from "../pages/AboutUs";    
 import Contact from "../pages/Contact";  
 import PriveService from "../pages/PriveService";  
+import Partners from "../pages/Partners";   // 🔹 import faqen e re
 
 export default function router(layoutProps) {
   return createBrowserRouter([
@@ -34,7 +35,7 @@ export default function router(layoutProps) {
         { path: "about", element: <AboutUs /> },
         { path: "contact", element: <Contact /> },
         { path: "prive-service", element: <PriveService /> },
-        
+        { path: "partners", element: <Partners /> },   // 🔹 shtuar path i ri
       ],
     },
   ]);

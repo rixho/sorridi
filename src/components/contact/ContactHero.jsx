@@ -1,8 +1,8 @@
-// src/components/about/AboutHero.jsx
+// src/components/contact/ContactHero.jsx
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-export default function AboutHero() {
+export default function ContactHero() {
   return (
     <Box
       sx={{
@@ -10,16 +10,16 @@ export default function AboutHero() {
         width: "100vw",
         left: "50%",
         marginLeft: "-50.5vw",
-        mt: -6,
-        height: { xs: 300, md: 700 },
+        mt:-6,
+        height: { xs: 300, md: 650 },
         overflow: "hidden",
       }}
     >
-      {/* Background video */}
+      {/* Video background */}
       <video
         autoPlay
-        muted
         loop
+        muted
         playsInline
         style={{
           width: "100%",
@@ -31,7 +31,7 @@ export default function AboutHero() {
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay text */}
+      {/* Overlay */}
       <Box
         sx={{
           position: "absolute",
@@ -39,13 +39,13 @@ export default function AboutHero() {
           left: 0,
           width: "100%",
           height: "100%",
-          background: "rgba(0,0,0,0.3)",
+          background: "rgba(0,0,0,0.3)", // pak errësim për kontrast
           display: "flex",
-          alignItems: "center",
           justifyContent: "center",
+          alignItems: "center",
           flexDirection: "column",
-          textAlign: "center",
           color: "#fff",
+          textAlign: "center",
           px: 2,
         }}
       >
@@ -53,24 +53,12 @@ export default function AboutHero() {
           variant="h3"
           fontWeight={700}
           sx={{
-            textShadow: "0px 2px 6px rgba(0,0,0,0.8)",
-            fontSize: { xs: "1.8rem", md: "3rem" },
-            mb: 2,
-            maxWidth: "600px", // kufizim titull
+            textShadow: "0px 4px 12px rgba(0,0,0,0.7)",
+            textTransform: "uppercase",
+            letterSpacing: 2,
           }}
         >
-          Sail the Untouched Riviera
-        </Typography>
-        <Typography
-          variant="h6"
-          sx={{
-            textShadow: "0px 1px 4px rgba(0,0,0,0.6)",
-            fontSize: { xs: "1rem", md: "1.25rem" },
-            maxWidth: "600px", // kufizim që të mos dalë më gjërë se titulli
-          }}
-        >
-          From secret coves to sun-drenched beaches, explore Albania’s hidden
-          gems aboard your private yacht.
+          Contact Us
         </Typography>
       </Box>
     </Box>

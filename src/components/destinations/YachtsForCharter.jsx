@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import yachts from "../../data/yachts.json";
 
 export default function YachtsForCharter() {
-  const charterYachts = yachts.filter((y) => y.status === "for-charter");
+  const charterYachts = yachts.filter((y) => y.status === "for-charter").slice(0, 2);;
 
   return (
     <Box

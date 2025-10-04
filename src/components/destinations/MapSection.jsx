@@ -8,19 +8,32 @@ import {
   Typography,
   Divider,
   IconButton,
+  Grid,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import destinations from "../../data/destinations.json";
 
-// custom icon
-const yachtIcon = new L.Icon({
-  iconUrl: "/media/marker.png",
-  iconSize: [35, 35],
-  iconAnchor: [17, 34],
-});
-
 export default function MapSection() {
   const [selected, setSelected] = useState(null);
+  const [activeImage, setActiveImage] = useState(null);
+
+  // funksion që krijon ikonë rrethore me imazhin e destinacionit
+  const createCircleIcon = (imageUrl) =>
+    L.divIcon({
+      html: `<div style="
+        width:40px; 
+        height:40px; 
+        border-radius:50%; 
+        background-image:url('${imageUrl}');
+        background-size:cover;
+        background-position:center;
+        border:2px solid white;
+        box-shadow:0 0 5px rgba(0,0,0,0.5);
+      "></div>`,
+      className: "", // heq klasen default
+      iconSize: [40, 40],
+      iconAnchor: [20, 20],
+    });
 
   return (
     <Box
@@ -70,16 +83,21 @@ export default function MapSection() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OSM</a>'
         />
-        {destinations.filter(d => d.lat && d.lng).map((d) => (
-          <Marker
-            key={d.id}
-            position={[d.lat, d.lng]}
-            icon={yachtIcon}
-            eventHandlers={{
-              click: () => setSelected(d),
-            }}
-          />
-        ))}
+        {destinations
+          .filter((d) => d.lat && d.lng)
+          .map((d) => (
+            <Marker
+              key={d.id}
+              position={[d.lat, d.lng]}
+              icon={createCircleIcon(d.heroImage)} // përdorim foton kryesore si ikonë
+              eventHandlers={{
+                click: () => {
+                  setSelected(d);
+                  setActiveImage(d.heroImage);
+                },
+              }}
+            />
+          ))}
       </MapContainer>
 
       {/* Drawer Modal */}
@@ -88,7 +106,7 @@ export default function MapSection() {
         open={!!selected}
         onClose={() => setSelected(null)}
         PaperProps={{
-          sx: { width: { xs: "100%", md: 400 }, p: 3 },
+          sx: { width: { xs: "100%", md: 500 }, p: 3 },
         }}
       >
         <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -100,18 +118,51 @@ export default function MapSection() {
           </IconButton>
         </Box>
         <Divider sx={{ my: 2 }} />
+
         {selected && (
           <>
+            {/* Foto kryesore */}
             <img
-              src={selected.heroImage}
+              src={activeImage}
               alt={selected.title}
               style={{
                 width: "100%",
+                height: "300px",
+                objectFit: "cover",
                 borderRadius: "8px",
                 marginBottom: "16px",
               }}
             />
-            <Typography variant="body1" color="text.secondary">
+
+            {/* Thumbnail-at */}
+            <Grid container spacing={2}>
+              {(selected.images || []).map((img, i) => (
+                <Grid item xs={4} key={i}>
+                  <img
+                    src={img}
+                    alt={`${selected.title}-${i}`}
+                    style={{
+                      width: "100%",
+                      height: "80px",
+                      objectFit: "cover",
+                      borderRadius: "6px",
+                      cursor: "pointer",
+                      border:
+                        img === activeImage
+                          ? "2px solid #8B1E2D"
+                          : "2px solid transparent",
+                    }}
+                    onClick={() => setActiveImage(img)}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              sx={{ mt: 3 }}
+            >
               {selected.description}
             </Typography>
           </>
