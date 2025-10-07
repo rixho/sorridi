@@ -1,6 +1,6 @@
+// src/components/HeroSection.jsx
 import React from "react";
-import { Box, Button, Typography, Grid } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
 
 export default function HeroSection() {
   return (
@@ -31,7 +31,7 @@ export default function HeroSection() {
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay content */}
+      {/* Overlay Text */}
       <Box
         sx={{
           position: "absolute",
@@ -39,65 +39,25 @@ export default function HeroSection() {
           left: 0,
           width: "100%",
           height: "100%",
-          background: "rgba(0,0,0,0.3)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          flexDirection: "column",
-          textAlign: "center",
+          background: "rgba(0,0,0,0.25)",
           color: "#fff",
-          px: 2,
+          textAlign: "center",
         }}
       >
-        {/* Headline */}
         <Typography
           variant="h3"
           fontWeight={700}
+          letterSpacing={4}
           sx={{
-            mb: 1,
-            textShadow: "0px 2px 6px rgba(0,0,0,0.8)",
+            textTransform: "uppercase",
+            textShadow: "0 4px 12px rgba(0,0,0,0.6)",
           }}
         >
-          Explore the World’s Finest Yachts
+          VOYAGE&nbsp;&nbsp;COUTURE
         </Typography>
-
-        {/* Subheadline */}
-        <Typography
-          variant="subtitle1"
-          sx={{
-            mb: 4,
-            fontWeight: 400,
-            textShadow: "0px 1px 4px rgba(0,0,0,0.6)",
-            fontSize: { xs: "0.9rem", md: "1.1rem" },
-          }}
-        >
-          Luxury in the Last Uncharted Mediterranean
-        </Typography>
-
-        {/* CTA Buttons */}
-        <Grid container spacing={2} justifyContent="center">
-          <Grid item>
-            <Button
-              variant="contained"
-              size="large"
-              component={Link}
-              to="/yachts-for-sale"
-            >
-              Buy a Yacht
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button
-              variant="outlined"
-              size="large"
-              component={Link}
-              to="/yachts-for-charter"
-              sx={{ color: "#fff", borderColor: "#fff" }}
-            >
-              Charter a Yacht
-            </Button>
-          </Grid>
-        </Grid>
       </Box>
     </Box>
   );

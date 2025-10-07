@@ -1,3 +1,4 @@
+// src/components/Header.jsx
 import React from "react";
 import {
   AppBar,
@@ -14,15 +15,15 @@ import {
   ListItemButton,
   ListItemText,
   useMediaQuery,
+  Box,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import ThemeToggle from "./ThemeToggle";
 import { useTranslation } from "react-i18next";
 import LanguageIcon from "@mui/icons-material/Language";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
 
-export default function Header({ mode, setMode }) {
+export default function Header() {
   const { t, i18n } = useTranslation();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -37,84 +38,118 @@ export default function Header({ mode, setMode }) {
   };
 
   const navLinks = [
-    { to: "/yachts-for-sale", label: t("nav.buy") },
     { to: "/yachts-for-charter", label: t("nav.charter") },
     { to: "/destinations", label: t("nav.destinations") },
     { to: "/prive-service", label: t("nav.priveservice") },
-    { to: "/partners", label: t("nav.partnership") },   // 🔹 SHTUAR PARTNERS
-    { to: "/articles", label: t("nav.news") },
+    { to: "/partners", label: t("nav.partnership") },
     { to: "/about", label: t("nav.about") },
-    { to: "/contact", label: t("nav.contact") },
+    { to: "/articles", label: t("nav.news") },
   ];
 
   return (
-    <AppBar position="sticky" color="primary">
-      <Toolbar sx={{ justifyContent: "space-between" }}>
+    <AppBar
+      position="sticky"
+      elevation={0}
+      sx={{
+        backgroundColor: "#141F2F",
+        color: "#fff",
+        py: 1,
+      }}
+    >
+      <Toolbar sx={{ justifyContent: "space-between", maxWidth: "1400px", mx: "auto" }}>
         {/* Logo */}
-        <Typography
-          variant="h6"
-          fontWeight="bold"
-          component={Link}
-          to="/"
-          sx={{ color: "inherit", textDecoration: "none" }}
-        >
-          Sorridi Yachts
-        </Typography>
+        <Box component={Link} to="/" sx={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
+          <Box
+            component="img"
+            src="/media/logo-gold.png" // 👉 ndrysho me logon tënde
+            alt="Aura Voyage Logo"
+            sx={{ height: 55, mr: 2 }}
+          />
+        </Box>
 
-        {/* Menu desktop */}
+        {/* Desktop Navigation */}
         {!isMobile && (
-          <Stack direction="row" spacing={2}>
+          <Stack direction="row" spacing={3} alignItems="center">
             {navLinks.map((link) => (
-              <Button key={link.to} component={Link} to={link.to} color="inherit">
+              <Button
+                key={link.to}
+                component={Link}
+                to={link.to}
+                sx={{
+                  color: "#fff",
+                  fontSize: "0.95rem",
+                  fontWeight: 500,
+                  textTransform: "uppercase",
+                  "&:hover": { color: "#C1A34E" },
+                }}
+              >
                 {link.label}
               </Button>
             ))}
+            {/* Contact button */}
+            <Button
+              component={Link}
+              to="/contact"
+              sx={{
+                border: "1px solid #C1A34E",
+                color: "#fff",
+                px: 3,
+                py: 0.8,
+                borderRadius: 0,
+                fontWeight: 600,
+                "&:hover": {
+                  backgroundColor: "#C1A34E",
+                  color: "#141F2F",
+                },
+              }}
+            >
+              CONTACT
+            </Button>
           </Stack>
         )}
 
-        {/* Right side (Lang + Theme + Mobile Menu) */}
-        <Stack direction="row" spacing={1} alignItems="center">
-          {/* Language */}
-          <IconButton color="inherit" onClick={(e) => setAnchorEl(e.currentTarget)}>
-            <LanguageIcon />
-          </IconButton>
-          <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={() => setAnchorEl(null)}>
-            <MenuItem onClick={() => changeLang("en")}>English</MenuItem>
-            <MenuItem onClick={() => changeLang("sq")}>Shqip</MenuItem>
-            <MenuItem onClick={() => changeLang("it")}>Italiano</MenuItem>
-          </Menu>
-
-          {/* Theme toggle */}
-          <ThemeToggle mode={mode} setMode={setMode} />
-
-          {/* Hamburger menu (mobile only) */}
-          {isMobile && (
-            <>
-              <IconButton color="inherit" onClick={() => setMobileOpen(true)}>
-                <MenuIcon />
-              </IconButton>
-              <Drawer
-                anchor="right"
-                open={mobileOpen}
-                onClose={() => setMobileOpen(false)}
-              >
-                <List sx={{ width: 220 }}>
-                  {navLinks.map((link) => (
-                    <ListItem key={link.to} disablePadding>
-                      <ListItemButton
-                        component={Link}
-                        to={link.to}
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        <ListItemText primary={link.label} />
-                      </ListItemButton>
-                    </ListItem>
-                  ))}
-                </List>
-              </Drawer>
-            </>
-          )}
-        </Stack>
+        {/* Mobile Menu */}
+        {isMobile && (
+          <>
+            <IconButton color="inherit" onClick={() => setMobileOpen(true)}>
+              <MenuIcon />
+            </IconButton>
+            <Drawer
+              anchor="right"
+              open={mobileOpen}
+              onClose={() => setMobileOpen(false)}
+              PaperProps={{
+                sx: { backgroundColor: "#141F2F", color: "#fff" },
+              }}
+            >
+              <List sx={{ width: 240 }}>
+                {navLinks.map((link) => (
+                  <ListItem key={link.to} disablePadding>
+                    <ListItemButton
+                      component={Link}
+                      to={link.to}
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      <ListItemText primary={link.label} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+                <ListItem disablePadding>
+                  <ListItemButton
+                    component={Link}
+                    to="/contact"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <ListItemText
+                      primary="CONTACT"
+                      sx={{ color: "#C1A34E", fontWeight: "bold" }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+            </Drawer>
+          </>
+        )}
       </Toolbar>
     </AppBar>
   );
