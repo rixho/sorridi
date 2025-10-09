@@ -11,7 +11,7 @@ export default function PartnersHero() {
         marginLeft: "-50.5vw",
         height: { xs: 300, md: 700 },
         mt: -6,
-        backgroundImage: "url('/media/1.jpg')",
+        backgroundImage: "url('/test/01.jpeg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         display: "flex",

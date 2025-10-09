@@ -24,7 +24,7 @@ export default function ProcessSection() {
           position: "relative",
           width: "100%",
           height: { xs: 420, md: 550 },
-          backgroundImage: "url('/media/1.jpg')", // vendos jahtin këtu
+          backgroundImage: "url('/test/04.jpeg')", // vendos jahtin këtu
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "flex",

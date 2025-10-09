@@ -15,7 +15,7 @@ export default function HeroSection() {
     >
       <Box
         component="img"
-        src="/media/1.jpg"
+        src="/test/01.jpeg"
         alt="Signature Privileges"
         sx={{ width: "100%", height: "100%", objectFit: "cover" }}
       />

@@ -10,7 +10,7 @@
     "price": "€4.8M",
     "name": "SUNCOCO",
     "model": "31M 1992",
-    "images": ["/media/suncoco/main.jpg", "/media/suncoco/1.jpg", "/media/suncoco/2.jpg"],
+    "images": ["/test/01.jpeg", "/test/02.jpeg", "/test/03.jpeg"],
     "about": {
       "title": "MOTOR YACHT FOR SALE",
       "paragraphs": [
@@ -37,7 +37,7 @@
     "price": "€48M",
     "name": "PURPOSE",
     "model": "55M 2017",
-    "images": ["/media/purpose/main.jpg", "/media/purpose/1.jpg", "/media/purpose/2.jpg"],
+    "images": ["/test/04.jpeg", "/test/05.jpeg", "/test/06.jpeg"],
     "about": {
       "title": "MOTOR YACHT FOR SALE",
       "paragraphs": [
@@ -64,7 +64,7 @@
     "price": "€650K",
     "name": "LIBERTY",
     "model": "70M 2020",
-    "images": ["/media/liberty/1.jpg", "/media/liberty/2.jpg", "/media/liberty/3.jpg"],
+    "images": ["/test/07.jpeg", "/test/08.jpeg", "/test/03.jpeg"],
     "about": {
       "title": "SUPERYACHT FOR CHARTER",
       "paragraphs": [
@@ -91,7 +91,7 @@
     "price": "€1500",
     "name": "DYNA",
     "model": "45 Flybridge 2015",
-    "images": ["/media/dyna/1.jpg", "/media/dyna/2.jpg"],
+    "images": ["/test/01.jpeg", "/test/02.jpeg", "/test/03.jpeg"],
     "about": {
       "title": "MOTOR YACHT FOR CHARTER",
       "paragraphs": [
@@ -118,7 +118,7 @@
     "price": "€1300",
     "name": "FERRETI 39",
     "model": "39 Flybridge 2010",
-    "images": ["/media/ferreti/1.jpg", "/media/ferreti/2.jpg"],
+    "images": ["/test/04.jpeg", "/test/05.jpeg", "/test/06.jpeg"],
     "about": {
       "title": "MOTOR YACHT FOR CHARTER",
       "paragraphs": [
@@ -145,7 +145,7 @@
   "price": "€2500",
   "name": "SUNSEEKER 56",
   "model": "Flybridge 56",
-  "images": ["/media/sunseeker/main.jpg", "/media/sunseeker/1.jpg", "/media/sunseeker/2.jpg"],
+  "images": ["/test/07.jpeg", "/test/08.jpeg", "/test/03.jpeg"],
   "about": {
     "title": "MOTOR YACHT FOR CHARTER",
     "paragraphs": [

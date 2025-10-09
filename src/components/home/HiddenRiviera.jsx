@@ -148,7 +148,7 @@ export default function HiddenRiviera() {
           <Grid item xs={12} md={6}>
             <Box
               component="img"
-              src="/media/1.jpg"
+              src="/test/05.jpeg"
               alt="Riviera Yacht"
               sx={{
                 width: "100%",

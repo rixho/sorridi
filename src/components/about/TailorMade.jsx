@@ -41,7 +41,7 @@ export default function TailorMade() {
       {/* Foto */}
       <Box
         component="img"
-        src="/media/1.jpg" // 👉 ndrysho me foton e saktë
+        src="/test/05.jpeg" // 👉 ndrysho me foton e saktë
         alt="Tailor Made Experience"
         sx={{
           width: "100%",
