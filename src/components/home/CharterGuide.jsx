@@ -54,31 +54,38 @@ export default function CharterGuide() {
         </Typography>
       </Box>
 
-      {/* Zona e errët me foto të fiksuar në ekran */}
+      {/* ✅ Zona e errët — background fiks që përshtatet në çdo ekran */}
       <Box
         sx={{
           backgroundColor: "#141F2F",
-          height: "50vh", // seksioni plot ekran
+          height: { xs: "60vh", md: "80vh" }, // lartësia konstante në çdo ekran
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
+        {/* Foto e përshtatur në qendër */}
         <Box
           component="img"
           src="/media/suncoco/main.jpg"
           alt="Chartering Guide"
           sx={{
-            maxWidth: "100%",
-            maxHeight: "100%",
-            objectFit: "contain", // ose "cover" nëse do mbulim total
-            borderRadius: 2,
-            boxShadow: "0 8px 24px rgba(0,0,0,0.5)",
+            width: { xs: "80%", md: "65%" }, // madhësi e balancuar
+            height: "auto",
+            maxHeight: { xs: "50vh", md: "70vh" },
+            objectFit: "contain", // përshtatje pa prerje
+            objectPosition: "center",
+            borderRadius: 3,
+            boxShadow: "0 10px 32px rgba(0,0,0,0.45)",
+            transition: "transform 0.5s ease",
+            "&:hover": { transform: "scale(1.02)" },
           }}
         />
       </Box>
 
-      {/* Teksti shpjegues dhe butoni poshtë seksionit */}
+      {/* Teksti shpjegues dhe butoni poshtë */}
       <Box sx={{ py: { xs: 6, md: 10 }, maxWidth: 700, mx: "auto" }}>
         <Typography
           variant="body1"

@@ -7,7 +7,7 @@ const features = [
   {
     id: "what",
     title: "WHAT TO DO",
-    button: "CHARTER WITH FRASER",
+    button: "CHARTER WITH SORRIDI",
     link: "/what-to-do",
     image: "/media/suncoco/2.jpg",
   },
@@ -37,23 +37,20 @@ export default function DestinationsStrip() {
         width: "100vw",
         left: "50%",
         marginLeft: "-50.5vw",
-        height: { xs: "auto", md: "75vh" },
+        height: "100vh", // ✅ mbulon gjith ekranin
         overflow: "hidden",
-        flexDirection: { xs: "column", md: "row" },
       }}
     >
       <Grid
         container
         sx={{
-          height: { xs: "auto", md: "100%" },
+          height: "100%",
           flexDirection: { xs: "column", md: "row" },
         }}
       >
         {features.map((f, idx) => {
           let flexValue = 1;
-          if (hovered) {
-            flexValue = hovered === f.id ? 2 : 0.5;
-          }
+          if (hovered) flexValue = hovered === f.id ? 2 : 0.6;
 
           return (
             <Grid
@@ -63,27 +60,25 @@ export default function DestinationsStrip() {
               onMouseLeave={() => setHovered(null)}
               sx={{
                 flex: { xs: "none", md: flexValue },
-                height: { xs: "60vh", md: "100%" },
+                height: { xs: "33.33vh", md: "100%" }, // ✅ në mobile 3 pjesë vertikale
                 transition: "flex 0.6s ease",
                 display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "flex-end", // nga qendra → poshtë
-                textAlign: "center",
+                alignItems: "flex-end",
+                justifyContent: "center",
                 color: "#fff",
                 position: "relative",
-                cursor: "pointer",
                 overflow: "hidden",
+                cursor: "pointer",
                 borderTop: {
-                  xs: idx !== 0 ? "1px solid rgba(255,255,255,0.3)" : "none",
+                  xs: idx !== 0 ? "1px solid rgba(255,255,255,0.2)" : "none",
                   md: "none",
                 },
                 borderLeft: {
-                  md: idx !== 0 ? "1px solid rgba(255,255,255,0.3)" : "none",
+                  md: idx !== 0 ? "1px solid rgba(255,255,255,0.2)" : "none",
                 },
               }}
             >
-              {/* Background */}
+              {/* Background image */}
               <Box
                 sx={{
                   position: "absolute",
@@ -91,39 +86,50 @@ export default function DestinationsStrip() {
                   backgroundImage: `url(${f.image})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
                   transition: "all 0.6s ease",
+                  transform: hovered === f.id ? "scale(1.08)" : "scale(1)",
                   filter:
                     hovered === f.id
                       ? "brightness(0.9)"
-                      : "brightness(0.4) grayscale(40%)",
-                  transform: hovered === f.id ? "scale(1.05)" : "scale(1)",
+                      : "brightness(0.45) grayscale(40%)",
                 }}
               />
 
-              {/* Overlay text */}
+              {/* Overlay gradient for readability */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)",
+                }}
+              />
+
+              {/* Text & Button overlay */}
               <Box
                 sx={{
                   position: "relative",
                   zIndex: 2,
-                  p: { xs: 3, md: 4 },
-                  bgcolor: "rgba(0,0,0,0.35)",
-                  borderRadius: 2,
-                  mx: { xs: 2, md: 0 },
-                  mb: { xs: 4, md: 6 }, // hapësirë poshtë
+                  textAlign: "center",
+                  mb: { xs: 5, md: 10 },
+                  px: { xs: 2, md: 4 },
                 }}
               >
                 <Typography
-                  variant="h5"
+                  variant="h4"
                   fontWeight={700}
                   sx={{
-                    mb: 2,
                     textTransform: "uppercase",
-                    letterSpacing: 1,
-                    fontSize: { xs: "1.2rem", md: "1.5rem" },
+                    letterSpacing: 1.5,
+                    mb: 2,
+                    fontSize: { xs: "1.3rem", sm: "1.7rem", md: "2rem" },
+                    textShadow: "0 4px 10px rgba(0,0,0,0.8)",
                   }}
                 >
                   {f.title}
                 </Typography>
+
                 <Button
                   component={Link}
                   to={f.link}
@@ -131,9 +137,10 @@ export default function DestinationsStrip() {
                   sx={{
                     borderColor: "#fff",
                     color: "#fff",
-                    px: { xs: 2, md: 3 },
+                    px: { xs: 2.5, md: 3.5 },
                     py: { xs: 0.8, md: 1 },
                     fontSize: { xs: "0.8rem", md: "1rem" },
+                    borderWidth: 2,
                     "&:hover": {
                       bgcolor: "#fff",
                       color: "#000",

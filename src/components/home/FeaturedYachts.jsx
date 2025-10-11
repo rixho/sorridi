@@ -1,27 +1,12 @@
 // src/components/sections/FeaturedYachts.jsx
 import React from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  Tabs,
-  Tab,
-  Grid,
-  Divider,
-} from "@mui/material";
+import { Box, Typography, Button, Grid, Divider } from "@mui/material";
 import { Link } from "react-router-dom";
 import yachts from "../../data/yachts.json";
 import YachtCard from "../YachtCard";
 
 export default function FeaturedYachts() {
-  const [tab, setTab] = React.useState("charter");
-
-  const sale = yachts.filter((y) => y.status === "for-sale").slice(0, 2);
   const charter = yachts.filter((y) => y.status === "for-charter").slice(0, 2);
-
-  const items = tab === "buy" ? sale : charter;
-  const viewAllLink =
-    tab === "buy" ? "/yachts-for-sale" : "/yachts-for-charter";
 
   return (
     <Box
@@ -30,118 +15,107 @@ export default function FeaturedYachts() {
         width: "100vw",
         left: "50%",
         marginLeft: "-50.5vw",
-        py: { xs: 6, md: 10 },
+        py: { xs: 8, md: 12 },
         backgroundColor: "#fff",
         textAlign: "center",
       }}
     >
       {/* Titulli */}
       <Typography
-        variant="h5"
-        fontWeight={700}
+        variant="h4"
+        fontWeight={800}
         gutterBottom
         sx={{
           textTransform: "uppercase",
           letterSpacing: 1,
-          fontSize: { xs: "1.5rem", md: "2rem" },
+          fontSize: { xs: "1.8rem", sm: "2.3rem", md: "2.8rem" },
+          color: "#0d1b2a",
         }}
       >
-        Your Choice
+        Yachts for Charter
       </Typography>
+
       <Divider
         sx={{
-          width: 60,
+          width: 90,
           mx: "auto",
-          borderBottomWidth: 2,
+          borderBottomWidth: 3,
           borderColor: "#d4a017",
-          mb: { xs: 4, md: 6 },
+          mb: { xs: 6, md: 10 },
         }}
       />
 
-      {/* Tabs */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: { xs: "column", sm: "row" },
-          gap: 2,
-          mb: { xs: 4, md: 6 },
-          px: 2,
-        }}
-      >
-        <Tabs
-          value={tab}
-          onChange={(e, v) => setTab(v)}
-          textColor="inherit"
-          variant="fullWidth"
-          TabIndicatorProps={{ style: { display: "none" } }}
-          sx={{
-            width: { xs: "100%", sm: "auto" },
-            "& .MuiTab-root": {
-              fontSize: { xs: "0.85rem", sm: "1rem" },
-            },
-          }}
-        >
-          <Tab
-            value="charter"
-            label="YACHTS FOR CHARTER"
-            sx={{
-              px: { xs: 2, md: 5 },
-              border: "1px solid #0d1b2a",
-              borderRadius: 0,
-              mr: { sm: 1 },
-              fontWeight: 600,
-              bgcolor: tab === "charter" ? "#0d1b2a" : "transparent",
-              color: tab === "charter" ? "#fff" : "#0d1b2a",
-              "&:hover": { bgcolor: "#16324f", color: "#fff" },
-            }}
-          />
-          <Tab
-            value="buy"
-            label="YACHTS FOR SALE"
-            sx={{
-              px: { xs: 2, md: 5 },
-              border: "1px solid #0d1b2a",
-              borderRadius: 0,
-              fontWeight: 600,
-              bgcolor: tab === "buy" ? "#0d1b2a" : "transparent",
-              color: tab === "buy" ? "#fff" : "#0d1b2a",
-              "&:hover": { bgcolor: "#16324f", color: "#fff" },
-            }}
-          />
-        </Tabs>
-      </Box>
-
-      {/* Yachts Grid */}
+      {/* Grid i jahteve */}
       <Grid
         container
-        spacing={{ xs: 3, md: 6 }}
+        spacing={{ xs: 5, sm: 7, md: 10 }} // 👉 hapësirë midis jahteve
         justifyContent="center"
-        sx={{ px: { xs: 2, md: 12 } }}
+        alignItems="stretch"
+        sx={{
+          px: { xs: 2, sm: 4, md: 10 },
+          width: "100%",
+          maxWidth: "1600px",
+          mx: "auto",
+        }}
       >
-        {items.map((y) => (
-          <Grid key={y.id} item xs={12} sm={6} md={6}>
-            <YachtCard yacht={y} big />
+        {charter.map((y) => (
+          <Grid
+            key={y.id}
+            item
+            xs={12}
+            md={6}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "stretch",
+            }}
+          >
+            <Box
+              sx={{
+                width: "100%",
+                maxWidth: { xs: "100%", sm: "500px", md: "680px", lg: "750px" },
+                transform: "scale(1.05)",
+                transition: "transform 0.4s ease",
+                "&:hover": {
+                  transform: "scale(1.1)",
+                },
+              }}
+            >
+              <YachtCard
+                yacht={y}
+                big
+                sx={{
+                  height: { xs: 420, sm: 520, md: 620, lg: 700 },
+                  "& img": {
+                    height: { xs: 260, sm: 360, md: 460, lg: 520 },
+                    objectFit: "cover !important",
+                    width: "100%",
+                  },
+                }}
+              />
+            </Box>
           </Grid>
         ))}
       </Grid>
 
       {/* Butoni poshtë */}
-      <Box sx={{ mt: { xs: 6, md: 8 } }}>
+      <Box sx={{ mt: { xs: 8, md: 10 } }}>
         <Button
           component={Link}
-          to={viewAllLink}
+          to="/yachts-for-charter"
           variant="contained"
           sx={{
             bgcolor: "#0d1b2a",
             color: "#fff",
-            px: { xs: 3, md: 5 },
-            py: { xs: 1.2, md: 1.8 },
-            fontWeight: 600,
+            px: { xs: 4, md: 6 },
+            py: { xs: 1.4, md: 1.8 },
+            fontWeight: 700,
+            fontSize: { xs: "1rem", md: "1.1rem" },
+            borderRadius: "8px",
             "&:hover": { bgcolor: "#16324f" },
           }}
         >
-          More Yachts for {tab === "buy" ? "Sale" : "Charter"}
+          Explore All Yachts
         </Button>
       </Box>
     </Box>
