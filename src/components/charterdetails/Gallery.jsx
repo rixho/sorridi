@@ -14,36 +14,64 @@ export default function Gallery({ yacht }) {
   const [mainImage, setMainImage] = useState(yacht?.images?.[0]);
 
   return (
-    <Box sx={{ py: { xs: 6, md: 10 }, backgroundColor: "#f9f9f9" }}>
+    <Box
+      sx={{
+        position: "relative",
+        width: "100vw", // ✅ Full nga borderi majtas në të djathtë
+        left: "50%",
+        marginLeft: "-50.5vw",
+        py: { xs: 8, md: 12 },
+        backgroundColor: "#f3f3f3",
+        textAlign: "center",
+      }}
+    >
       <Container maxWidth="lg">
         {/* Titulli */}
-        <Box textAlign="center" mb={5}>
+        <Box mb={{ xs: 6, md: 8 }}>
           <Typography
             variant="overline"
-            sx={{ color: "#8B1E2D", letterSpacing: 2 }}
+            sx={{
+              color: "#8B1E2D",
+              letterSpacing: 2,
+              display: "block",
+              mb: 1,
+            }}
           >
             {yacht.builder} {yacht.model}
           </Typography>
+
+          {/* Vija e kuqe direkt sipër GALLERY */}
+          <Divider
+            sx={{
+              width: 70,
+              height: 3,
+              bgcolor: "#8B1E2D",
+              mx: "auto",
+              mb: 2,
+              borderRadius: 1,
+            }}
+          />
+
           <Typography
             variant="h4"
             fontWeight={700}
-            sx={{ color: "#0d1b2a", mt: 1 }}
+            sx={{
+              color: "#0d1b2a",
+              fontSize: { xs: "1.8rem", md: "2.4rem" },
+              textTransform: "uppercase",
+            }}
           >
             GALLERY
           </Typography>
-          <Divider
-            sx={{
-              width: 60,
-              height: 2,
-              bgcolor: "#8B1E2D",
-              mx: "auto",
-              my: 2,
-            }}
-          />
         </Box>
 
-        {/* Gallery */}
-        <Grid container spacing={3} justifyContent="center">
+        {/* Galeria */}
+        <Grid
+          container
+          spacing={{ xs: 2, md: 4 }}
+          justifyContent="center"
+          alignItems="flex-start"
+        >
           {/* Foto kryesore */}
           <Grid item xs={12} md={9}>
             <Box
@@ -52,17 +80,19 @@ export default function Gallery({ yacht }) {
               alt={yacht.name}
               sx={{
                 width: "100%",
-                height: { xs: 300, md: 450 },
-                objectFit: "cover",
+                height: { xs: 360, sm: 460, md: 600, lg: 680 },
+                objectFit: "contain", // ✅ fotoja përshtatet plotësisht, pa u prerë
+                backgroundColor: "#fff",
                 borderRadius: 2,
-                boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                boxShadow: "0 8px 20px rgba(0,0,0,0.18)",
+                transition: "all 0.4s ease",
               }}
             />
           </Grid>
 
           {/* Thumbnails */}
           <Grid item xs={12} md={3}>
-            <Stack spacing={2}>
+            <Stack spacing={{ xs: 2, md: 2.5 }}>
               {yacht.images?.map((img, i) => (
                 <Box
                   key={i}
@@ -72,17 +102,22 @@ export default function Gallery({ yacht }) {
                   onClick={() => setMainImage(img)}
                   sx={{
                     width: "100%",
-                    height: 120,
-                    objectFit: "cover",
-                    borderRadius: 1.5,
+                    height: { xs: 100, sm: 130, md: 150 },
+                    objectFit: "contain", // ✅ mos priten
+                    backgroundColor: "#fff",
+                    borderRadius: 2,
                     cursor: "pointer",
                     border:
                       mainImage === img
                         ? "3px solid #8B1E2D"
-                        : "1px solid #ddd",
+                        : "1px solid #ccc",
                     transition: "all 0.3s ease",
+                    boxShadow:
+                      mainImage === img
+                        ? "0 6px 14px rgba(0,0,0,0.25)"
+                        : "0 3px 8px rgba(0,0,0,0.1)",
                     "&:hover": {
-                      transform: "scale(1.03)",
+                      transform: "scale(1.04)",
                     },
                   }}
                 />
@@ -91,29 +126,30 @@ export default function Gallery({ yacht }) {
           </Grid>
         </Grid>
 
-        {/* Butoni i broshurës */}
-        <Box textAlign="center" mt={6}>
-         <a
-  href="/file/test.pdf"   // path relativ nga public
-  download
-  style={{ textDecoration: "none" }}
->
-  <Button
-    variant="contained"
-    sx={{
-      backgroundColor: "#dcdcdc",
-      color: "#000",
-      px: 5,
-      py: 1.5,
-      fontWeight: 600,
-      textTransform: "uppercase",
-      "&:hover": { backgroundColor: "#bdbdbd" },
-    }}
-  >
-    DOWNLOAD BROCHURE
-  </Button>
-</a>
-
+        {/* Butoni për broshurën */}
+        <Box textAlign="center" mt={{ xs: 6, md: 8 }}>
+          <a
+            href="/file/test.pdf"
+            download
+            style={{ textDecoration: "none" }}
+          >
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#dcdcdc",
+                color: "#000",
+                px: { xs: 4, md: 6 },
+                py: { xs: 1.3, md: 1.6 },
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: 1,
+                fontSize: { xs: "0.9rem", md: "1rem" },
+                "&:hover": { backgroundColor: "#bdbdbd" },
+              }}
+            >
+              DOWNLOAD BROCHURE
+            </Button>
+          </a>
         </Box>
       </Container>
     </Box>

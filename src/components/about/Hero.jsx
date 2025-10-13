@@ -1,8 +1,29 @@
 // src/components/about/AboutHero.jsx
-import React from "react";
-import { Box, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 export default function AboutHero() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [heights, setHeights] = useState({ xs: 300, md: 700 });
+
+  useEffect(() => {
+    const updateHeights = () => {
+      const screenH = window.innerHeight;
+      const header = document.querySelector("header");
+      const headerHeight = header ? header.offsetHeight : 0;
+
+      setHeights({
+        xs: Math.min(screenH * 0.45, 420), // 📱 për mobile
+        md: screenH - headerHeight, // 💻 për desktop
+      });
+    };
+
+    updateHeights();
+    window.addEventListener("resize", updateHeights);
+    return () => window.removeEventListener("resize", updateHeights);
+  }, []);
+
   return (
     <Box
       sx={{
@@ -10,28 +31,36 @@ export default function AboutHero() {
         width: "100vw",
         left: "50%",
         marginLeft: "-50.5vw",
-        mt: -6,
-        height: { xs: 300, md: 700 },
+        height: { xs: `${heights.xs}px`, md: `${heights.md}px` },
         overflow: "hidden",
+        backgroundColor: "black",
+        transition: "height 0.3s ease",
+        mt: -6,
       }}
     >
-      {/* Background video */}
+      {/* 🎥 Background Video */}
       <video
         autoPlay
         muted
         loop
         playsInline
         style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
           width: "100%",
           height: "100%",
-          objectFit: "cover",
+          objectFit: "cover", // ✅ përshtatet në çdo ekran
+          objectPosition: "center",
+          zIndex: 1,
         }}
       >
         <source src="/media/hero.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay text */}
+      {/* 🌫 Overlay Tekst */}
       <Box
         sx={{
           position: "absolute",
@@ -39,21 +68,24 @@ export default function AboutHero() {
           left: 0,
           width: "100%",
           height: "100%",
-          background: "rgba(0,0,0,0.3)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
+          background: "rgba(0,0,0,0.3)",
           color: "#fff",
+          zIndex: 2,
           px: 2,
         }}
       >
         <Typography
-          variant="h3"
-          fontWeight={700}
           sx={{
-            textShadow: "0px 2px 6px rgba(0,0,0,0.8)",
-            fontSize: { xs: "1.8rem", md: "3rem" },
+            fontFamily: "Poppins, sans-serif",
+            fontWeight: 700,
+            textTransform: "uppercase",
+            textShadow: "0 4px 12px rgba(0,0,0,0.8)",
+            fontSize: { xs: "1.8rem", sm: "2.4rem", md: "3.2rem" },
+            letterSpacing: "0.05em",
           }}
         >
           About Aura

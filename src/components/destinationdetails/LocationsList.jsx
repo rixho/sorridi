@@ -11,37 +11,58 @@ export default function LocationsList({ locations = [], itineraryTitle }) {
         width: "100vw",
         position: "relative",
         left: "50%",
-        marginLeft: "-50vw",
-        py: { xs: 6, md: 10 },
-        backgroundColor: "#f9f9f9",
+        marginLeft: "-50.5vw",
+        py: { xs: 10, md: 14 },
+        backgroundColor: "#F7F7F7",
+        fontFamily: "'Poppins', sans-serif",
       }}
     >
       {/* Header */}
-      <Box textAlign="center" mb={8}>
+      <Box textAlign="center" mb={10}>
         <Typography
           variant="overline"
-          sx={{ color: "#8B1E2D", letterSpacing: 2 }}
+          sx={{
+            color: "#141F2F",
+            letterSpacing: 2,
+            textTransform: "uppercase",
+            fontWeight: 500,
+            mb: 1,
+          }}
         >
-          WANT TO SEE
+          What to See
         </Typography>
+
+        <Box
+          sx={{
+            width: 60,
+            height: 3,
+            backgroundColor: "#80131F",
+            mx: "auto",
+            mb: 2,
+          }}
+        />
+
         <Typography
-          variant="h4"
-          fontWeight={700}
-          sx={{ mb: 1, color: "#0d1b2a", textTransform: "uppercase" }}
+          sx={{
+            fontWeight: 700,
+            fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.6rem" },
+            color: "#141F2F",
+            textTransform: "uppercase",
+          }}
         >
           {itineraryTitle} – Sail into Albania’s Wild Blue
         </Typography>
       </Box>
 
-      {/* Rendero lokacionet */}
+      {/* Lista e lokacioneve */}
       {locations.map((loc, index) => (
         <Grid
           container
           spacing={6}
           alignItems="center"
           sx={{
-            mb: 10,
-            px: { xs: 2, md: 10 }, // më shumë hapësirë majtas/djathtas
+            mb: { xs: 12, md: 16 },
+            px: { xs: 3, md: 10 },
           }}
           key={loc.id}
           direction={index % 2 === 0 ? "row" : "row-reverse"}
@@ -54,49 +75,71 @@ export default function LocationsList({ locations = [], itineraryTitle }) {
               alt={loc.title}
               sx={{
                 width: "100%",
-                height: { xs: 250, md: 400 },
+                height: { xs: 360, sm: 440, md: 520 }, // 🖼️ më e madhe që të dalë sipër e poshtë tekstit
                 objectFit: "cover",
-                borderRadius: 2,
-                boxShadow: "0 6px 16px rgba(0,0,0,0.2)",
+                borderRadius: "6px",
+                boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
               }}
             />
           </Grid>
 
           {/* Teksti */}
           <Grid item xs={12} md={6}>
-            <Typography variant="h5" fontWeight={700} sx={{ mb: 2 }}>
-              {loc.title}
-            </Typography>
-
-            {/* Shfaqim paragrafët e plotë */}
-            {loc.text.split("\n").map((para, i) => (
+            <Box sx={{ px: { xs: 1, md: 4 } }}>
               <Typography
-                key={i}
-                variant="body1"
-                color="text.secondary"
-                sx={{ mb: 2, fontSize: "1.05rem", lineHeight: 1.8 }}
+                sx={{
+                  fontWeight: 700,
+                  fontSize: { xs: "1.4rem", md: "1.8rem" },
+                  color: "#141F2F",
+                  mb: 2,
+                  textTransform: "uppercase",
+                }}
               >
-                {para}
+                {loc.title}
               </Typography>
-            ))}
 
-            <Typography
-              variant="caption"
-              sx={{ color: "#8B1E2D", display: "block", mb: 2 }}
-            >
-              {loc.options}
-            </Typography>
+              {loc.text.split("\n").map((para, i) => (
+                <Typography
+                  key={i}
+                  sx={{
+                    mb: 2,
+                    color: "#454545",
+                    fontSize: { xs: "1rem", md: "1.1rem" },
+                    lineHeight: 1.9,
+                    fontWeight: 400,
+                  }}
+                >
+                  {para}
+                </Typography>
+              ))}
 
-            <Button
-              variant="contained"
-              sx={{
-                bgcolor: "#0d1b2a",
-                "&:hover": { bgcolor: "#8B1E2D" },
-                fontWeight: 600,
-              }}
-            >
-              Plan Your Trip
-            </Button>
+              <Typography
+                sx={{
+                  color: "#D4AF37",
+                  fontWeight: 600,
+                  letterSpacing: 0.4,
+                  mb: 3,
+                }}
+              >
+                {loc.options}
+              </Typography>
+
+              <Button
+                variant="contained"
+                sx={{
+                  bgcolor: "#141F2F",
+                  "&:hover": { bgcolor: "#80131F" },
+                  px: { xs: 4, md: 5 },
+                  py: { xs: 1.3, md: 1.6 },
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  borderRadius: 0,
+                  boxShadow: "none",
+                }}
+              >
+                Plan Your Trip
+              </Button>
+            </Box>
           </Grid>
         </Grid>
       ))}

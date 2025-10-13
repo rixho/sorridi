@@ -1,5 +1,5 @@
 // src/components/destinations/MapSection.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import L from "leaflet";
 import {
@@ -16,38 +16,61 @@ import destinations from "../../data/destinations.json";
 export default function MapSection() {
   const [selected, setSelected] = useState(null);
   const [activeImage, setActiveImage] = useState(null);
+  const [heights, setHeights] = useState({ xs: 300, md: 700 });
 
-  // funksion që krijon ikonë rrethore me imazhin e destinacionit
+  // 🔧 Lartësia dinamike si HeroSection
+  useEffect(() => {
+    const updateHeights = () => {
+      const screenH = window.innerHeight;
+      const header = document.querySelector("header");
+      const headerHeight = header ? header.offsetHeight : 0;
+      setHeights({
+        xs: Math.min(screenH * 0.45, 420),
+        md: screenH - headerHeight,
+      });
+    };
+    updateHeights();
+    window.addEventListener("resize", updateHeights);
+    return () => window.removeEventListener("resize", updateHeights);
+  }, []);
+
+  // Ikonë rrethore me imazh destinacioni
   const createCircleIcon = (imageUrl) =>
     L.divIcon({
       html: `<div style="
-        width:40px; 
-        height:40px; 
-        border-radius:50%; 
+        width:48px;
+        height:48px;
+        border-radius:50%;
         background-image:url('${imageUrl}');
         background-size:cover;
         background-position:center;
         border:2px solid white;
-        box-shadow:0 0 5px rgba(0,0,0,0.5);
+        box-shadow:0 0 8px rgba(0,0,0,0.4);
       "></div>`,
-      className: "", // heq klasen default
-      iconSize: [40, 40],
-      iconAnchor: [20, 20],
+      className: "",
+      iconSize: [48, 48],
+      iconAnchor: [24, 24],
     });
 
   return (
     <Box
       sx={{
-        width: "100vw",
         position: "relative",
+        width: "100vw",
         left: "50%",
         marginLeft: "-50.5vw",
-        backgroundColor: "#F5F5F5",
-        py: { xs: 8, md: 12 },
+        overflow: "hidden",
+        mt: { xs: 8, md: 12 },
       }}
     >
       {/* Header */}
-      <Box textAlign="center" mb={4}>
+      <Box
+        sx={{
+          textAlign: "center",
+          py: { xs: 4, md: 6 },
+          backgroundColor: "#fff",
+        }}
+      >
         <Typography
           variant="overline"
           sx={{ color: "#8B1E2D", letterSpacing: 2 }}
@@ -63,54 +86,80 @@ export default function MapSection() {
             mb: 2,
           }}
         />
-        <Typography variant="h5" fontWeight={700} gutterBottom>
-          Explore Our Destinations
+        <Typography
+          variant="h4"
+          fontWeight={700}
+          sx={{ mb: 1, color: "#0D1B2A" }}
+        >
+          Explore the Albanian Riviera
         </Typography>
-        <Typography variant="body1" color="text.secondary">
-          Navigate the Albanian Riviera and discover hidden gems along the
-          coastline
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          sx={{ maxWidth: 700, mx: "auto", lineHeight: 1.8 }}
+        >
+          From the wild peninsula of Karaburun to the serene shores of Ksamil — 
+          trace the coastline that defines Albania’s most breathtaking beauty.
         </Typography>
       </Box>
 
-      {/* Map */}
-      <MapContainer
-        center={[40.05, 19.8]}
-        zoom={9}
-        style={{ height: "500px", borderRadius: "12px", overflow: "hidden" }}
-        scrollWheelZoom={false}
+      {/* 🌍 Harta full width si Hero */}
+      <Box
+        sx={{
+          position: "relative",
+          width: "100vw",
+          left: "50%",
+          marginLeft: "-50vw",
+          height: { xs: heights.xs, md: heights.md },
+        }}
       >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OSM</a>'
-        />
-        {destinations
-          .filter((d) => d.lat && d.lng)
-          .map((d) => (
-            <Marker
-              key={d.id}
-              position={[d.lat, d.lng]}
-              icon={createCircleIcon(d.heroImage)} // përdorim foton kryesore si ikonë
-              eventHandlers={{
-                click: () => {
-                  setSelected(d);
-                  setActiveImage(d.heroImage);
-                },
-              }}
-            />
-          ))}
-      </MapContainer>
+        <MapContainer
+          center={[40.05, 19.5]} // ✅ Qendër balancuar (Karaburun në veri, Ksamil në jug)
+          zoom={9.5} // ✅ mjaftueshëm për të parë gjithë rivierën
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+          scrollWheelZoom={false}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
+          />
 
-      {/* Drawer Modal */}
+          {destinations
+            .filter((d) => d.lat && d.lng)
+            .map((d) => (
+              <Marker
+                key={d.id}
+                position={[d.lat, d.lng]}
+                icon={createCircleIcon(d.heroImage)}
+                eventHandlers={{
+                  click: () => {
+                    setSelected(d);
+                    setActiveImage(d.heroImage);
+                  },
+                }}
+              />
+            ))}
+        </MapContainer>
+      </Box>
+
+      {/* Drawer me info destinacioni */}
       <Drawer
         anchor="right"
         open={!!selected}
         onClose={() => setSelected(null)}
         PaperProps={{
-          sx: { width: { xs: "100%", md: 500 }, p: 3 },
+          sx: {
+            width: { xs: "100%", md: 480 },
+            p: { xs: 2.5, md: 3.5 },
+            backgroundColor: "#fafafa",
+          },
         }}
       >
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography variant="h6" fontWeight={700}>
+          <Typography variant="h6" fontWeight={700} color="#0D1B2A">
             {selected?.title}
           </Typography>
           <IconButton onClick={() => setSelected(null)}>
@@ -121,7 +170,6 @@ export default function MapSection() {
 
         {selected && (
           <>
-            {/* Foto kryesore */}
             <img
               src={activeImage}
               alt={selected.title}
@@ -129,13 +177,12 @@ export default function MapSection() {
                 width: "100%",
                 height: "300px",
                 objectFit: "cover",
-                borderRadius: "8px",
+                borderRadius: "10px",
                 marginBottom: "16px",
               }}
             />
 
-            {/* Thumbnail-at */}
-            <Grid container spacing={2}>
+            <Grid container spacing={1.5}>
               {(selected.images || []).map((img, i) => (
                 <Grid item xs={4} key={i}>
                   <img
@@ -161,7 +208,7 @@ export default function MapSection() {
             <Typography
               variant="body1"
               color="text.secondary"
-              sx={{ mt: 3 }}
+              sx={{ mt: 3, lineHeight: 1.8 }}
             >
               {selected.description}
             </Typography>

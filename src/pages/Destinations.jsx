@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import Hero from "../components/destinations/Hero";
 import MapSection from "../components/destinations/MapSection";
 import DestinationsCarousel from "../components/destinations/DestinationsCarousel";
-import YachtsForCharter from "../components/destinations/YachtsForCharter";
+import FeaturedYachts from "../components/home/FeaturedYachts";
 import DiscoverAlbania from "../components/destinations/DiscoverAlbania";
 
 export default function Destinations() {
@@ -13,7 +13,7 @@ export default function Destinations() {
       <Hero />
       <MapSection />
       <DestinationsCarousel />
-      <YachtsForCharter />
+      <FeaturedYachts />
       <DiscoverAlbania />
       {/* më pas do shtojmë seksione të tjera: p.sh. listën, slider, faq info */}
     </Box>

@@ -1,8 +1,27 @@
 // src/components/about/AboutHero.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 
 export default function AboutHero() {
+  const [heights, setHeights] = useState({ xs: 300, md: 700 });
+
+  useEffect(() => {
+    const updateHeights = () => {
+      const screenH = window.innerHeight;
+      const header = document.querySelector("header");
+      const headerHeight = header ? header.offsetHeight : 0;
+
+      setHeights({
+        xs: Math.min(screenH * 0.45, 420), // 📱 mobile max 420px
+        md: screenH - headerHeight,        // 💻 desktop plotësisht dinamik
+      });
+    };
+
+    updateHeights();
+    window.addEventListener("resize", updateHeights);
+    return () => window.removeEventListener("resize", updateHeights);
+  }, []);
+
   return (
     <Box
       sx={{
@@ -11,35 +30,34 @@ export default function AboutHero() {
         left: "50%",
         marginLeft: "-50.5vw",
         mt: -6,
-        height: { xs: 300, md: 700 },
+        height: { xs: heights.xs, md: heights.md },
         overflow: "hidden",
       }}
     >
-      {/* Background video */}
-      <video
+      {/* 🎥 Background video */}
+      <Box
+        component="video"
         autoPlay
         muted
         loop
         playsInline
-        style={{
+        sx={{
           width: "100%",
           height: "100%",
-          objectFit: "cover",
+          objectFit: "cover", // ✅ për çdo ekran
+          objectPosition: "center",
         }}
       >
         <source src="/media/hero.mp4" type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
+      </Box>
 
-      {/* Overlay text */}
+      {/* 🖤 Overlay & Text */}
       <Box
         sx={{
           position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background: "rgba(0,0,0,0.3)",
+          inset: 0,
+          background: "rgba(0,0,0,0.35)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -53,20 +71,24 @@ export default function AboutHero() {
           variant="h3"
           fontWeight={700}
           sx={{
-            textShadow: "0px 2px 6px rgba(0,0,0,0.8)",
-            fontSize: { xs: "1.8rem", md: "3rem" },
+            textShadow: "0 2px 6px rgba(0,0,0,0.8)",
+            fontSize: { xs: "1.8rem", md: "3.2rem" },
             mb: 2,
-            maxWidth: "600px", // kufizim titull
+            maxWidth: "680px",
+            lineHeight: 1.3,
           }}
         >
           Sail the Untouched Riviera
         </Typography>
+
         <Typography
           variant="h6"
           sx={{
-            textShadow: "0px 1px 4px rgba(0,0,0,0.6)",
+            textShadow: "0 1px 4px rgba(0,0,0,0.6)",
             fontSize: { xs: "1rem", md: "1.25rem" },
-            maxWidth: "600px", // kufizim që të mos dalë më gjërë se titulli
+            maxWidth: "680px",
+            lineHeight: 1.7,
+            color: "#f7f7f7",
           }}
         >
           From secret coves to sun-drenched beaches, explore Albania’s hidden

@@ -16,11 +16,11 @@ function PrevArrow(props) {
       sx={{
         position: "absolute",
         top: "50%",
-        left: "-40px",
+        left: { xs: "-10px", md: "-50px" },
         transform: "translateY(-50%)",
         zIndex: 2,
         bgcolor: "#fff",
-        boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+        boxShadow: "0 3px 8px rgba(0,0,0,0.25)",
         "&:hover": { bgcolor: "#f0f0f0" },
       }}
     >
@@ -38,11 +38,11 @@ function NextArrow(props) {
       sx={{
         position: "absolute",
         top: "50%",
-        right: "-40px",
+        right: { xs: "-10px", md: "-50px" },
         transform: "translateY(-50%)",
         zIndex: 2,
         bgcolor: "#fff",
-        boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+        boxShadow: "0 3px 8px rgba(0,0,0,0.25)",
         "&:hover": { bgcolor: "#f0f0f0" },
       }}
     >
@@ -63,8 +63,8 @@ export default function DestinationsCarousel() {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
-      { breakpoint: 960, settings: { slidesToShow: 2 } },
-      { breakpoint: 600, settings: { slidesToShow: 1 } },
+      { breakpoint: 1200, settings: { slidesToShow: 2 } },
+      { breakpoint: 800, settings: { slidesToShow: 1 } },
     ],
   };
 
@@ -75,42 +75,72 @@ export default function DestinationsCarousel() {
         position: "relative",
         left: "50%",
         marginLeft: "-50.5vw",
-        py: { xs: 6, md: 10 },
-        backgroundColor: "#F5F5F5",
+        py: { xs: 8, md: 14 },
+        backgroundColor: "#F7F7F7",
+        overflow: "hidden",
       }}
     >
       {/* Header */}
-      <Box textAlign="center" mb={6}>
+      <Box textAlign="center" mb={8}>
         <Typography
           variant="overline"
-          sx={{ color: "#8B1E2D", letterSpacing: 2 }}
+          sx={{
+            color: "#80131F",
+            letterSpacing: 2,
+            fontWeight: 600,
+            textTransform: "uppercase",
+          }}
         >
-          PRE MADE ITINERARIES
+          Pre-Made Itineraries
         </Typography>
+        <Box
+          sx={{
+            width: 60,
+            height: 3,
+            backgroundColor: "#80131F",
+            mx: "auto",
+            my: 2,
+            borderRadius: 2,
+          }}
+        />
         <Typography
           variant="h4"
           fontWeight={700}
-          sx={{ mb: 1, color: "#0d1b2a" }}
+          sx={{
+            color: "#141F2F",
+            textTransform: "uppercase",
+            fontSize: { xs: "1.7rem", md: "2.3rem" },
+          }}
         >
           Explore Our Destinations
         </Typography>
       </Box>
 
       {/* Carousel */}
-      <Box sx={{ maxWidth: "1200px", mx: "auto", position: "relative" }}>
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: "1900px",
+          mx: "auto",
+          position: "relative",
+          px: { xs: 2, sm: 4, md: 6 },
+        }}
+      >
         <Slider {...settings}>
           {iteneraries.map((d) => (
             <Box key={d.id} px={2}>
               <Box
                 sx={{
                   bgcolor: "#fff",
-                  borderRadius: 2,
+                  borderRadius: "8px",
                   overflow: "hidden",
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
                   textAlign: "left",
-                  minHeight: 480, // 🔑 lartësia fikse për kartën
                   display: "flex",
                   flexDirection: "column",
+                  height: { xs: 480, md: 540 }, // 🔑 më e madhe për desktop
+                  transition: "transform 0.3s ease",
+                  "&:hover": { transform: "translateY(-6px)" },
                 }}
               >
                 {/* Foto */}
@@ -120,32 +150,45 @@ export default function DestinationsCarousel() {
                   alt={d.title}
                   sx={{
                     width: "100%",
-                    height: 220, // 🔑 fikse për të gjitha imazhet
+                    height: { xs: 240, md: 300 },
                     objectFit: "cover",
+                    objectPosition: "center",
                   }}
                 />
 
                 {/* Teksti */}
                 <Box
                   sx={{
-                    p: 3,
+                    p: { xs: 3, md: 4 },
                     flexGrow: 1,
                     display: "flex",
                     flexDirection: "column",
                   }}
                 >
-                  <Typography variant="h6" fontWeight={700} sx={{ mb: 1 }}>
-                    {d.title}
-                  </Typography>
                   <Typography
-                    variant="body2"
-                    color="text.secondary"
+                    variant="h6"
+                    fontWeight={800}
                     sx={{
-                      mb: 2,
-                      flexGrow: 1, // 🔑 merr hapësirën që mbetet
+                      mb: 1,
+                      color: "#141F2F",
+                      fontSize: { xs: "1.1rem", md: "1.3rem" },
+                      textTransform: "uppercase",
                     }}
                   >
-                    {d.description.slice(0, 160)}...
+                    {d.title}
+                  </Typography>
+
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "#454545",
+                      mb: 3,
+                      flexGrow: 1,
+                      fontSize: { xs: "0.95rem", md: "1rem" },
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {d.description.slice(0, 170)}...
                   </Typography>
 
                   <Button
@@ -153,9 +196,10 @@ export default function DestinationsCarousel() {
                     to={`/destinations/${d.id}`}
                     sx={{
                       color: "#8B1E2D",
-                      fontWeight: 600,
+                      fontWeight: 700,
                       textTransform: "uppercase",
-                      mt: "auto", // 🔑 gjithmonë në fund
+                      fontSize: { xs: "0.85rem", md: "0.9rem" },
+                      alignSelf: "flex-start",
                     }}
                   >
                     Full Itinerary &gt;

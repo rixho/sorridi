@@ -19,51 +19,59 @@ export default function PriveService() {
     width: "100vw",
     left: "50%",
     marginLeft: "-50.5vw",
-    backgroundColor: "#f2f2f2",
-    py: { xs: 6, md: 10 },
+    backgroundColor: "#F7F7F7",
+    py: { xs: 12, md: 18 }, // 🔥 më shumë hapësirë sipër & poshtë
     textAlign: "center",
   }}
 >
+  {/* Titulli */}
   <Typography
     variant="h5"
     fontWeight={700}
     sx={{
       mb: 2,
-      color: "#0d1b2a",
+      color: "#0D1B2A",
       letterSpacing: 1,
       textTransform: "uppercase",
+      fontSize: { xs: "1.4rem", md: "1.8rem" },
     }}
   >
     EVENTS & CELEBRATIONS
   </Typography>
 
-  {/* Red underline */}
+  {/* Vija e kuqe */}
   <Box
     sx={{
-      width: 80,
+      width: 70,
       height: 3,
       backgroundColor: "#8B1E2D",
       mx: "auto",
-      mb: 4,
+      mb: { xs: 4, md: 6 },
+      borderRadius: 2,
     }}
   />
 
+  {/* Përshkrimi */}
   <Typography
-    variant="h6"
+    variant="body1"
     sx={{
-      color: "text.secondary",
-      maxWidth: 1000,
+      color: "#555",
+      maxWidth: 900,
       mx: "auto",
-      lineHeight: 1.9,
-      fontSize: { xs: "1rem", md: "1.25rem" }, // pak më i madh se body1
+      lineHeight: 2,
+      fontWeight: 400,
+      letterSpacing: 0.3,
+      fontSize: { xs: "0.95rem", md: "1.1rem" },
+      px: { xs: 3, md: 0 },
     }}
   >
     From intimate dinners to grand yacht parties, every detail is curated with
-    flawless elegance—from bespoke décor, floral design, and lighting to
-    entertainment, music, and on-board service—so you and your guests can simply
-    enjoy the celebration.
+    flawless elegance — from bespoke décor, floral design, and lighting to
+    entertainment, music, and on-board service — so you and your guests can
+    simply enjoy the celebration.
   </Typography>
 </Box>
+
 
 
       <VideoSection />

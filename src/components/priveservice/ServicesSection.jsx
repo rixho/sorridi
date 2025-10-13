@@ -1,3 +1,4 @@
+// src/components/sections/ServicesSection.jsx
 import React, { useState } from "react";
 import { Box, Typography, Button, Grid, Divider } from "@mui/material";
 
@@ -16,6 +17,13 @@ const services = [
     image: "/media/prive/helicopter.jpg",
     link: "/helicopter",
   },
+  {
+    id: "jet",
+    title: "PRIVATE JET EXPERIENCE",
+    button: "FLY WITH LUXURY",
+    image: "/media/prive/jet.jpg",
+    link: "/private-jet",
+  },
 ];
 
 export default function ServicesSection() {
@@ -28,7 +36,7 @@ export default function ServicesSection() {
         width: "100vw",
         left: "50%",
         marginLeft: "-50.5vw",
-        height: { xs: "auto", md: "70vh" },
+        height: { xs: "auto", md: "85vh" }, // 🔥 më e madhe
         overflow: "hidden",
         flexDirection: { xs: "column", md: "row" },
       }}
@@ -54,10 +62,10 @@ export default function ServicesSection() {
               onMouseLeave={() => setHovered(null)}
               sx={{
                 flex: { xs: "none", md: flexValue },
-                height: { xs: "60vh", md: "100%" },
+                height: { xs: "65vh", md: "100%" },
                 transition: "flex 0.6s ease",
                 display: "flex",
-                justifyContent: "flex-end", // shtyn overlay poshtë
+                justifyContent: "flex-end",
                 textAlign: "center",
                 color: "#fff",
                 position: "relative",
@@ -72,7 +80,7 @@ export default function ServicesSection() {
                 },
               }}
             >
-              {/* Background image */}
+              {/* Background Image */}
               <Box
                 sx={{
                   position: "absolute",
@@ -85,22 +93,22 @@ export default function ServicesSection() {
                     hovered === s.id
                       ? "brightness(0.9)"
                       : "brightness(0.4) grayscale(40%)",
-                  transform: hovered === s.id ? "scale(1.05)" : "scale(1)",
+                  transform: hovered === s.id ? "scale(1.08)" : "scale(1)",
                 }}
               />
 
-              {/* Overlay content */}
+              {/* Overlay Text */}
               <Box
                 sx={{
                   position: "relative",
                   zIndex: 2,
-                  p: { xs: 3, md: 4 },
+                  p: { xs: 3, md: 5 },
                   bgcolor: "rgba(0,0,0,0.35)",
                   borderRadius: 2,
                   mx: { xs: 2, md: 0 },
                   display: "flex",
                   flexDirection: "column",
-                  justifyContent: "flex-end", // përmbajtja poshtë
+                  justifyContent: "flex-end",
                   alignItems: "center",
                   width: "100%",
                 }}
@@ -112,13 +120,21 @@ export default function ServicesSection() {
                   sx={{
                     textTransform: "uppercase",
                     letterSpacing: 1,
+                    fontSize: { xs: "1rem", md: "1.3rem" },
                   }}
                 >
                   {s.title}
                 </Typography>
+
                 <Divider
-                  sx={{ bgcolor: "#8B1E2D", width: 60, mx: "auto", mb: 2 }}
+                  sx={{
+                    bgcolor: "#8B1E2D",
+                    width: 60,
+                    mx: "auto",
+                    mb: 2,
+                  }}
                 />
+
                 <Button
                   href={s.link}
                   variant="outlined"
@@ -127,7 +143,9 @@ export default function ServicesSection() {
                     color: "#fff",
                     px: { xs: 2, md: 3 },
                     py: { xs: 0.8, md: 1 },
-                    fontSize: { xs: "0.8rem", md: "1rem" },
+                    fontWeight: 600,
+                    fontSize: { xs: "0.85rem", md: "1rem" },
+                    letterSpacing: 0.5,
                     "&:hover": {
                       bgcolor: "#fff",
                       color: "#000",

@@ -61,7 +61,7 @@ export default function Locations({ mapMarkers = [], locations = [] }) {
         width: "100vw",
         position: "relative",
         left: "50%",
-        marginLeft: "-50vw",
+        marginLeft: "-50.5vw",
         py: { xs: 6, md: 10 },
         backgroundColor: "#f9f9f9",
       }}

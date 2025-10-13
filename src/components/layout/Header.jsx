@@ -1,5 +1,5 @@
 // src/components/Header.jsx
-import React from "react";
+import React, { useRef, useLayoutEffect, useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -21,12 +21,8 @@ import { useTranslation } from "react-i18next";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
 
-// ✅ Funksion ndihmës për të fshehur/shfaqur headerin
 function HideOnScroll({ children }) {
-  const trigger = useScrollTrigger({
-    threshold: 50, // pas 50px scroll poshtë fillon të fshihet
-  });
-
+  const trigger = useScrollTrigger({ threshold: 50 });
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       {children}
@@ -35,11 +31,24 @@ function HideOnScroll({ children }) {
 }
 
 export default function Header() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  // ✅ referencë për AppBar
+  const headerRef = useRef(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  // ✅ Mat automatikisht lartësinë e header-it për çdo ekran
+  useLayoutEffect(() => {
+    if (headerRef.current) {
+      const updateHeight = () => setHeaderHeight(headerRef.current.offsetHeight);
+      updateHeight();
+      window.addEventListener("resize", updateHeight);
+      return () => window.removeEventListener("resize", updateHeight);
+    }
+  }, []);
 
   const navLinks = [
     { to: "/yachts-for-charter", label: t("nav.charter") },
@@ -51,125 +60,135 @@ export default function Header() {
   ];
 
   return (
-    <HideOnScroll>
-      <AppBar
-        position="fixed" // ✅ qëndron sipër gjithmonë
-        elevation={0}
-        sx={{
-          backgroundColor: "#141F2F",
-          color: "#fff",
-          py: 0,
-          transition: "transform 0.3s ease-in-out",
-        }}
-      >
-        <Toolbar
+    <>
+      <HideOnScroll>
+        <AppBar
+          ref={headerRef}
+          position="fixed"
+          elevation={0}
           sx={{
-            justifyContent: "space-between",
-            maxWidth: "1400px",
-            mx: "auto",
-            width: "100%",
+            backgroundColor: "#141F2F",
+            color: "#fff",
+            py: 0,
+            transition: "transform 0.3s ease-in-out",
+            zIndex: 1300,
           }}
         >
-          {/* Logo */}
-          <Box
-            component={Link}
-            to="/"
-            sx={{ display: "flex", alignItems: "center", textDecoration: "none" }}
+          <Toolbar
+            sx={{
+              justifyContent: "space-between",
+              maxWidth: "1400px",
+              mx: "auto",
+              width: "100%",
+              minHeight: { xs: 64, md: 80 }, // minimum për aksesibilitet
+            }}
           >
+            {/* Logo */}
             <Box
-              component="img"
-              src="/media/logo-gold.png"
-              alt="Aura Voyage Logo"
-              sx={{ height: 55, mr: 2 }}
-            />
-          </Box>
+              component={Link}
+              to="/"
+              sx={{ display: "flex", alignItems: "center", textDecoration: "none" }}
+            >
+              <Box
+                component="img"
+                src="/media/logo-gold.png"
+                alt="Aura Voyage Logo"
+                sx={{ height: 55, mr: 2 }}
+              />
+            </Box>
 
-          {/* Desktop Menu */}
-          {!isMobile && (
-            <Stack direction="row" spacing={3} alignItems="center">
-              {navLinks.map((link) => (
+            {/* Desktop Menu */}
+            {!isMobile && (
+              <Stack direction="row" spacing={3} alignItems="center">
+                {navLinks.map((link) => (
+                  <Button
+                    key={link.to}
+                    component={Link}
+                    to={link.to}
+                    sx={{
+                      color: "#fff",
+                      fontSize: "0.95rem",
+                      fontWeight: 500,
+                      textTransform: "uppercase",
+                      "&:hover": { color: "#C1A34E" },
+                    }}
+                  >
+                    {link.label}
+                  </Button>
+                ))}
                 <Button
-                  key={link.to}
                   component={Link}
-                  to={link.to}
+                  to="/contact"
                   sx={{
+                    border: "1px solid #C1A34E",
                     color: "#fff",
-                    fontSize: "0.95rem",
-                    fontWeight: 500,
-                    textTransform: "uppercase",
-                    "&:hover": { color: "#C1A34E" },
+                    px: 3,
+                    py: 0.8,
+                    borderRadius: 0,
+                    fontWeight: 600,
+                    "&:hover": {
+                      backgroundColor: "#C1A34E",
+                      color: "#141F2F",
+                    },
                   }}
                 >
-                  {link.label}
+                  CONTACT
                 </Button>
-              ))}
+              </Stack>
+            )}
 
-              {/* Contact button */}
-              <Button
-                component={Link}
-                to="/contact"
-                sx={{
-                  border: "1px solid #C1A34E",
-                  color: "#fff",
-                  px: 3,
-                  py: 0.8,
-                  borderRadius: 0,
-                  fontWeight: 600,
-                  "&:hover": {
-                    backgroundColor: "#C1A34E",
-                    color: "#141F2F",
-                  },
-                }}
-              >
-                CONTACT
-              </Button>
-            </Stack>
-          )}
-
-          {/* Mobile Menu */}
-          {isMobile && (
-            <>
-              <IconButton color="inherit" onClick={() => setMobileOpen(true)}>
-                <MenuIcon />
-              </IconButton>
-              <Drawer
-                anchor="right"
-                open={mobileOpen}
-                onClose={() => setMobileOpen(false)}
-                PaperProps={{
-                  sx: { backgroundColor: "#141F2F", color: "#fff" },
-                }}
-              >
-                <List sx={{ width: 240 }}>
-                  {navLinks.map((link) => (
-                    <ListItem key={link.to} disablePadding>
+            {/* Mobile Menu */}
+            {isMobile && (
+              <>
+                <IconButton color="inherit" onClick={() => setMobileOpen(true)}>
+                  <MenuIcon />
+                </IconButton>
+                <Drawer
+                  anchor="right"
+                  open={mobileOpen}
+                  onClose={() => setMobileOpen(false)}
+                  PaperProps={{
+                    sx: { backgroundColor: "#141F2F", color: "#fff" },
+                  }}
+                >
+                  <List sx={{ width: 240 }}>
+                    {navLinks.map((link) => (
+                      <ListItem key={link.to} disablePadding>
+                        <ListItemButton
+                          component={Link}
+                          to={link.to}
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          <ListItemText primary={link.label} />
+                        </ListItemButton>
+                      </ListItem>
+                    ))}
+                    <ListItem disablePadding>
                       <ListItemButton
                         component={Link}
-                        to={link.to}
+                        to="/contact"
                         onClick={() => setMobileOpen(false)}
                       >
-                        <ListItemText primary={link.label} />
+                        <ListItemText
+                          primary="CONTACT"
+                          sx={{ color: "#C1A34E", fontWeight: "bold" }}
+                        />
                       </ListItemButton>
                     </ListItem>
-                  ))}
-                  <ListItem disablePadding>
-                    <ListItemButton
-                      component={Link}
-                      to="/contact"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      <ListItemText
-                        primary="CONTACT"
-                        sx={{ color: "#C1A34E", fontWeight: "bold" }}
-                      />
-                    </ListItemButton>
-                  </ListItem>
-                </List>
-              </Drawer>
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
-    </HideOnScroll>
+                  </List>
+                </Drawer>
+              </>
+            )}
+          </Toolbar>
+
+          {/* Vija poshtë header-it */}
+          <Box sx={{ width: "100%", height: "2px", backgroundColor: "#fff" }} />
+          <Box sx={{ width: "100%", height: "4px", backgroundColor: "#b30000" }} />
+        </AppBar>
+      </HideOnScroll>
+
+      {/* ✅ Offset dinamik që përshtatet automatikisht */}
+      <Box sx={{ height: `${headerHeight}px` }} />
+    </>
   );
 }

@@ -11,7 +11,7 @@ export default function CTASection({ cta }) {
         width: "100vw",
         position: "relative",
         left: "50%",
-        marginLeft: "-50vw",
+        marginLeft: "-50.5vw",
         py: { xs: 8, md: 12 },
         backgroundColor: "#f2f2f2",
         textAlign: "center",

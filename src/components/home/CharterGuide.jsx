@@ -23,9 +23,7 @@ export default function CharterGuide() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
-      if (res.ok) {
-        setSuccess(true);
-      }
+      if (res.ok) setSuccess(true);
     } catch (err) {
       console.error("Error sending guide:", err);
     } finally {
@@ -41,72 +39,104 @@ export default function CharterGuide() {
         left: "50%",
         marginLeft: "-50.5vw",
         textAlign: "center",
-        bgcolor: "#fff",
+        bgcolor: "#FFFFFF",
+        fontFamily: "'Poppins', sans-serif",
+        overflow: "hidden",
       }}
     >
-      {/* Header i bardhë */}
-      <Box sx={{ py: { xs: 6, md: 10 } }}>
-        <Typography variant="overline" sx={{ letterSpacing: 2 }}>
+      {/* Titulli sipër */}
+      <Box sx={{ py: { xs: 2.5, md: 3 } }}>
+        <Typography
+          variant="overline"
+          sx={{
+            letterSpacing: 1.5,
+            fontWeight: 600,
+            color: "#000",
+            fontSize: { xs: "0.7rem", md: "0.75rem" },
+          }}
+        >
           EXPLORE
         </Typography>
-        <Typography variant="h5" fontWeight={700}>
-          <span style={{ color: "#d4a017" }}>ALBANIA</span> CHARTERING GUIDE 2025
+
+        <Box
+          sx={{
+            width: 50,
+            height: 3,
+            backgroundColor: "#80131F",
+            mx: "auto",
+            mb: 0.8,
+          }}
+        />
+
+        <Typography
+          sx={{
+            fontWeight: 700,
+            fontSize: { xs: "1.3rem", sm: "1.6rem", md: "1.7rem" },
+            textTransform: "uppercase",
+            color: "#141F2F",
+            lineHeight: 1.05,
+          }}
+        >
+          <span style={{ color: "#D4AF37" }}>ALBANIA </span>
+          CHARTERING GUIDE 2025
         </Typography>
       </Box>
 
-      {/* ✅ Zona e errët — background fiks që përshtatet në çdo ekran */}
+      {/* Seksioni me sfond të errët dhe imazhin në qendër */}
       <Box
         sx={{
           backgroundColor: "#141F2F",
-          height: { xs: "60vh", md: "80vh" }, // lartësia konstante në çdo ekran
+          py: { xs: 3, md: 4 },
           display: "flex",
-          alignItems: "center",
           justifyContent: "center",
-          position: "relative",
+          alignItems: "center",
           overflow: "hidden",
         }}
       >
-        {/* Foto e përshtatur në qendër */}
         <Box
           component="img"
           src="/media/suncoco/main.jpg"
-          alt="Chartering Guide"
+          alt="Albania Chartering Guide 2025"
           sx={{
-            width: { xs: "80%", md: "65%" }, // madhësi e balancuar
+            width: { xs: "80%", sm: "55%", md: "32%", lg: "30%" },
+            maxWidth: "480px",
             height: "auto",
-            maxHeight: { xs: "50vh", md: "70vh" },
-            objectFit: "contain", // përshtatje pa prerje
+            objectFit: "contain",
             objectPosition: "center",
-            borderRadius: 3,
-            boxShadow: "0 10px 32px rgba(0,0,0,0.45)",
-            transition: "transform 0.5s ease",
+            transition: "transform 0.4s ease",
             "&:hover": { transform: "scale(1.02)" },
           }}
         />
       </Box>
 
-      {/* Teksti shpjegues dhe butoni poshtë */}
-      <Box sx={{ py: { xs: 6, md: 10 }, maxWidth: 700, mx: "auto" }}>
+      {/* Teksti poshtë dhe butoni */}
+      <Box sx={{ py: { xs: 3.5, md: 4 }, maxWidth: 550, mx: "auto" }}>
         <Typography
-          variant="body1"
           sx={{
-            mb: 4,
-            color: "text.secondary",
+            mb: 2,
+            color: "#454545",
+            fontWeight: 400,
+            fontSize: { xs: "0.85rem", md: "0.9rem" },
+            lineHeight: 1.45,
           }}
         >
           Discover the best sailing routes, top marinas, and insider tips for
           exploring Albania by sea. Download our complete 2025 guide to plan
           your next yacht adventure with up-to-date, practical information.
         </Typography>
+
         <Button
           variant="contained"
           sx={{
             bgcolor: "#141F2F",
-            color: "#fff",
-            px: 5,
-            py: 1.5,
+            color: "#FFFFFF",
+            px: { xs: 3, md: 3.5 },
+            py: { xs: 0.9, md: 1.1 },
             fontWeight: 600,
-            "&:hover": { bgcolor: "#16324f" },
+            letterSpacing: 0.3,
+            borderRadius: 0,
+            fontSize: { xs: "0.78rem", md: "0.82rem" },
+            "&:hover": { bgcolor: "#0D1623" },
           }}
           onClick={() => setOpen(true)}
         >
@@ -123,25 +153,31 @@ export default function CharterGuide() {
             left: "50%",
             transform: "translate(-50%, -50%)",
             bgcolor: "#fff",
-            p: 6,
-            borderRadius: 3,
-            width: { xs: "90%", md: 450 },
+            p: { xs: 3, md: 3.5 },
+            borderRadius: 2,
+            width: { xs: "90%", md: 360 },
             textAlign: "center",
-            boxShadow: "0 8px 40px rgba(0,0,0,0.5)",
+            boxShadow: "0 8px 30px rgba(0,0,0,0.45)",
           }}
         >
           {!success ? (
             <>
               <Typography
-                variant="h5"
-                fontWeight={700}
-                sx={{ mb: 2, color: "#0d1b2a" }}
+                sx={{
+                  fontWeight: 700,
+                  fontSize: { xs: "1.2rem", md: "1.3rem" },
+                  color: "#141F2F",
+                  mb: 0.8,
+                }}
               >
                 🚤 Get Your Free Guide
               </Typography>
               <Typography
-                variant="body1"
-                sx={{ mb: 4, color: "text.secondary" }}
+                sx={{
+                  mb: 2,
+                  color: "#454545",
+                  fontSize: { xs: "0.82rem", md: "0.88rem" },
+                }}
               >
                 Enter your email and receive our{" "}
                 <strong>Albania Chartering Guide 2025</strong> directly in your
@@ -152,17 +188,18 @@ export default function CharterGuide() {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                sx={{ mb: 3 }}
+                sx={{ mb: 1.8 }}
               />
-              <Stack spacing={2}>
+              <Stack spacing={1.2}>
                 <Button
                   variant="contained"
                   sx={{
-                    bgcolor: "#0d1b2a",
+                    bgcolor: "#141F2F",
                     color: "#fff",
-                    py: 1.5,
+                    py: 1,
                     fontWeight: 600,
-                    "&:hover": { bgcolor: "#16324f" },
+                    fontSize: "0.85rem",
+                    "&:hover": { bgcolor: "#0D1623" },
                   }}
                   onClick={handleSubmit}
                   disabled={loading || !email}
@@ -172,7 +209,7 @@ export default function CharterGuide() {
                 <Button
                   variant="text"
                   onClick={() => setOpen(false)}
-                  sx={{ color: "text.secondary" }}
+                  sx={{ color: "#454545", fontSize: "0.8rem" }}
                 >
                   Cancel
                 </Button>

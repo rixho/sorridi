@@ -1,3 +1,4 @@
+// src/components/sections/StatsSection.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { Box, Typography, Grid, Fade } from "@mui/material";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
@@ -7,46 +8,17 @@ import DiamondIcon from "@mui/icons-material/Diamond";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import PublicIcon from "@mui/icons-material/Public";
 
+// Lista e statistikave (pa ngjyrë të paracaktuar për ikonat)
 const stats = [
-  {
-    icon: <StarOutlineIcon sx={{ fontSize: { xs: 45, sm: 55, md: 60 }, color: "#d4a017" }} />,
-    number: 15,
-    suffix: "+",
-    label: "EXCLUSIVE YACHTS",
-  },
-  {
-    icon: <CalendarMonthIcon sx={{ fontSize: { xs: 45, sm: 55, md: 60 }, color: "#d4a017" }} />,
-    number: 120,
-    suffix: "+",
-    label: "CHARTER DAYS PER SEASON",
-  },
-  {
-    icon: <MapIcon sx={{ fontSize: { xs: 45, sm: 55, md: 60 }, color: "#d4a017" }} />,
-    number: 10,
-    suffix: "+",
-    label: "RIVIERA DESTINATIONS",
-  },
-  {
-    icon: <DiamondIcon sx={{ fontSize: { xs: 45, sm: 55, md: 60 }, color: "#d4a017" }} />,
-    number: 10,
-    suffix: "+",
-    label: "LUXURY SERVICES",
-  },
-  {
-    icon: <SupportAgentIcon sx={{ fontSize: { xs: 45, sm: 55, md: 60 }, color: "#d4a017" }} />,
-    number: 24,
-    suffix: "/7",
-    label: "CONCIERGE SERVICE",
-  },
-  {
-    icon: <PublicIcon sx={{ fontSize: { xs: 45, sm: 55, md: 60 }, color: "#d4a017" }} />,
-    number: 1300,
-    suffix: "+",
-    label: "TRUSTED BY GLOBAL TRAVELERS",
-  },
+  { icon: <StarOutlineIcon />, number: 15, suffix: "+", label: "EXCLUSIVE YACHTS" },
+  { icon: <CalendarMonthIcon />, number: 120, suffix: "+", label: "CHARTER DAYS PER SEASON" },
+  { icon: <MapIcon />, number: 10, suffix: "+", label: "RIVIERA DESTINATIONS" },
+  { icon: <DiamondIcon />, number: 10, suffix: "+", label: "LUXURY SERVICES" },
+  { icon: <SupportAgentIcon />, number: 24, suffix: "/7", label: "CONCIERGE SERVICE" },
+  { icon: <PublicIcon />, number: 1300, suffix: "+", label: "TRUSTED BY GLOBAL TRAVELERS" },
 ];
 
-// ✅ Hook që rrit numrin nga 0 → target çdo herë që është visible
+// Hook që numëron gradualisht deri në vlerën e caktuar sapo seksioni bëhet i dukshëm
 function useCountUp(target, trigger) {
   const [value, setValue] = useState(0);
   const frame = useRef(null);
@@ -55,7 +27,7 @@ function useCountUp(target, trigger) {
     if (!trigger) return;
     setValue(0);
     let start = null;
-    const duration = 1500;
+    const duration = 1500; // kohëzgjatja e animacionit në ms
     const animate = (timestamp) => {
       if (!start) start = timestamp;
       const progress = Math.min((timestamp - start) / duration, 1);
@@ -73,12 +45,10 @@ export default function StatsSection() {
   const ref = useRef();
   const [visible, setVisible] = useState(false);
 
-  // ✅ Observer që ndez dhe fik animacionin sa herë seksioni shfaqet ose largohet
+  // Observer për të aktivizuar animacionet kur seksioni shfaqet në viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        setVisible(entries[0].isIntersecting);
-      },
+      (entries) => setVisible(entries[0].isIntersecting),
       { threshold: 0.4 }
     );
     if (ref.current) observer.observe(ref.current);
@@ -91,40 +61,39 @@ export default function StatsSection() {
       sx={{
         position: "relative",
         width: "100vw",
-        left: "50%",
-        right: "50%",
         marginLeft: "-50.5vw",
-        marginRight: "-50vw",
+        left: "50%",
         py: { xs: 6, md: 9 },
-        backgroundColor: "#E6E6E6",
+        backgroundColor: "#E6E6E6", // sfondi gri i lehtë
+        fontFamily: "'Poppins', sans-serif",
       }}
     >
-      <Box sx={{ maxWidth: "1300px", mx: "auto", textAlign: "center" }}>
+      <Box sx={{ maxWidth: "1300px", mx: "auto", textAlign: "center", px: 2 }}>
+        {/* Titulli kryesor me highlight të artë për “IN ALBANIA” */}
         <Typography
-          variant="h4"
-          fontWeight={700}
-          gutterBottom
           sx={{
+            fontWeight: 700,
+            fontSize: { xs: "1.6rem", sm: "2rem", md: "2.5rem" },
+            color: "#141F2F",
             textTransform: "uppercase",
-            letterSpacing: 1,
             mb: { xs: 2, md: 3 },
-            fontSize: { xs: "1.4rem", sm: "1.7rem", md: "2rem" },
-            color: "#0d1b2a",
           }}
         >
           REDEFINING LUXURY YACHTING{" "}
-          <span style={{ color: "#d4a017" }}>IN ALBANIA</span>
+          <span style={{ color: "#D4AF37" }}>IN ALBANIA</span>
         </Typography>
 
+        {/* Paragrafi nën titull */}
         <Typography
-          variant="body1"
           sx={{
             maxWidth: "850px",
             mx: "auto",
             mb: { xs: 5, md: 6 },
-            color: "text.secondary",
+            color: "#454545",
+            fontWeight: 300,
             fontSize: { xs: "0.95rem", md: "1.05rem" },
-            lineHeight: 1.7,
+            lineHeight: 1.6,
+            letterSpacing: "-0.02em",
           }}
         >
           At Aura Voyage, we blend world-class yachting with the hidden beauty
@@ -133,14 +102,15 @@ export default function StatsSection() {
           last untouched coastlines.
         </Typography>
 
+        {/* Statistikat pa karta – vetëm ikonë, numër dhe etiketë */}
         <Grid
           container
           spacing={{ xs: 4, md: 6 }}
           justifyContent="center"
           alignItems="center"
         >
-          {stats.map((s, idx) => {
-            const count = useCountUp(s.number, visible);
+          {stats.map((stat, idx) => {
+            const count = useCountUp(stat.number, visible);
             return (
               <Grid
                 key={idx}
@@ -151,48 +121,61 @@ export default function StatsSection() {
                 display="flex"
                 justifyContent="center"
               >
+                {/* Animacion i butë ndërsa shfaqen elementët */}
                 <Fade in={visible} style={{ transitionDelay: `${idx * 150}ms` }}>
                   <Box
                     sx={{
-                      backgroundColor: "rgba(255,255,255,0.9)",
-                      borderRadius: 3,
-                      height: { xs: 170, sm: 190, md: 210 },
-                      width: { xs: "85%", sm: "80%", md: "70%" },
                       display: "flex",
                       flexDirection: "column",
-                      justifyContent: "center",
                       alignItems: "center",
                       textAlign: "center",
-                      transition: "all 0.3s ease",
-                      "&:hover": {
-                        boxShadow: "0 6px 18px rgba(0,0,0,0.12)",
-                        transform: "translateY(-5px)",
-                      },
                     }}
                   >
-                    {s.icon}
-                    <Typography
-                      variant="h5"
-                      fontWeight={800}
+                    {/* Ikona brenda kutie të lehtë gri me kënde të rrumbullakosura */}
+                    <Box
                       sx={{
-                        mt: 1.5,
-                        mb: 0.5,
-                        color: "#0d1b2a",
+                        backgroundColor: "#F5F5F5",
+                        borderRadius: 2,
+                        p: 1.5,
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        mb: 1.5,
+                      }}
+                    >
+                      {React.cloneElement(stat.icon, {
+                        sx: {
+                          fontSize: { xs: 40, sm: 48, md: 52 },
+                          color: "#D4AF37",
+                        },
+                      })}
+                    </Box>
+
+                    {/* Numri – i animuar dhe në ngjyrë të errët */}
+                    <Typography
+                      sx={{
+                        fontWeight: 700,
+                        color: "#141F2F",
                         fontSize: { xs: "1.8rem", md: "2.1rem" },
+                        mt: 0.5,
                       }}
                     >
                       {count}
-                      {s.suffix}
+                      {stat.suffix}
                     </Typography>
+
+                    {/* Etiketa – e vogël dhe uppercase */}
                     <Typography
-                      variant="body2"
                       sx={{
-                        color: "text.secondary",
-                        fontSize: { xs: "0.9rem", md: "0.95rem" },
-                        letterSpacing: 0.4,
+                        fontWeight: 400,
+                        color: "#141F2F",
+                        fontSize: { xs: "0.9rem", md: "1rem" },
+                        letterSpacing: 0.5,
+                        textTransform: "uppercase",
+                        mt: 0.25,
                       }}
                     >
-                      {s.label}
+                      {stat.label}
                     </Typography>
                   </Box>
                 </Fade>
