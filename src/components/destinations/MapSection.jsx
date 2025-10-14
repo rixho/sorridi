@@ -9,6 +9,8 @@ import {
   Divider,
   IconButton,
   Grid,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import destinations from "../../data/destinations.json";
@@ -17,6 +19,9 @@ export default function MapSection() {
   const [selected, setSelected] = useState(null);
   const [activeImage, setActiveImage] = useState(null);
   const [heights, setHeights] = useState({ xs: 300, md: 700 });
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   // 🔧 Lartësia dinamike si HeroSection
   useEffect(() => {
@@ -52,6 +57,10 @@ export default function MapSection() {
       iconAnchor: [24, 24],
     });
 
+  // 🧭 Qendra dhe zmadhimi ndryshe për mobile
+  const mapCenter = isMobile ? [39.95, 19.8] : [40.05, 19.5];
+  const mapZoom = isMobile ? 8.3 : 9.5;
+
   return (
     <Box
       sx={{
@@ -73,13 +82,16 @@ export default function MapSection() {
       >
         <Typography
           variant="overline"
-          sx={{ color: "#8B1E2D", letterSpacing: 2 }}
+          sx={{ color: "#0d1b2a",
+              letterSpacing: 2,
+              display: "block",
+              mb: 1,}}
         >
           YOUR JOURNEY
         </Typography>
         <Divider
           sx={{
-            width: 60,
+            width: 160,
             mx: "auto",
             borderBottomWidth: 2,
             borderColor: "#8B1E2D",
@@ -89,16 +101,23 @@ export default function MapSection() {
         <Typography
           variant="h4"
           fontWeight={700}
-          sx={{ mb: 1, color: "#0D1B2A" }}
+          sx={{ 
+            fontWeight: 700,
+            fontSize: { xs: "1.8rem", sm: "2rem", md: "2.5rem" },
+            textTransform: "uppercase",
+            color: "#141F2F",
+            lineHeight: 1.05,
+           }}
         >
           Explore the Albanian Riviera
         </Typography>
         <Typography
           variant="body1"
           color="text.secondary"
-          sx={{ maxWidth: 700, mx: "auto", lineHeight: 1.8 }}
+          sx={{ maxWidth: 700, mx: "auto", lineHeight: 1.8,
+            fontSize: { xs: "1rem", md: "1.2rem" }, }}
         >
-          From the wild peninsula of Karaburun to the serene shores of Ksamil — 
+          From the wild peninsula of Karaburun to the serene shores of Ksamil —
           trace the coastline that defines Albania’s most breathtaking beauty.
         </Typography>
       </Box>
@@ -110,12 +129,13 @@ export default function MapSection() {
           width: "100vw",
           left: "50%",
           marginLeft: "-50vw",
-          height: { xs: heights.xs, md: heights.md },
+          height: isMobile ? "100vh" : heights.md, // ✅ full screen në mobile
+          mt: isMobile ? 0 : 0,
         }}
       >
         <MapContainer
-          center={[40.05, 19.5]} // ✅ Qendër balancuar (Karaburun në veri, Ksamil në jug)
-          zoom={9.5} // ✅ mjaftueshëm për të parë gjithë rivierën
+          center={mapCenter}
+          zoom={mapZoom}
           style={{
             width: "100%",
             height: "100%",

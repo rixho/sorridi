@@ -73,7 +73,7 @@ export default function StatsSection() {
         <Typography
           sx={{
             fontWeight: 700,
-            fontSize: { xs: "1.6rem", sm: "2rem", md: "2.5rem" },
+            fontSize: { xs: "1.8rem", sm: "2rem", md: "2.4rem" },
             color: "#141F2F",
             textTransform: "uppercase",
             mb: { xs: 2, md: 3 },

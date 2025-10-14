@@ -34,7 +34,7 @@ export default function LocationsList({ locations = [], itineraryTitle }) {
 
         <Box
           sx={{
-            width: 60,
+            width: 160,
             height: 3,
             backgroundColor: "#80131F",
             mx: "auto",

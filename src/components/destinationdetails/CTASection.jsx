@@ -21,19 +21,32 @@ export default function CTASection({ cta }) {
       <Typography
         variant="overline"
         sx={{
-          color: "#8B1E2D",
-          letterSpacing: 2,
-          fontWeight: 600,
+          color: "#141F2F",
+            letterSpacing: 2,
+            textTransform: "uppercase",
+            fontWeight: 500,
+            mb: 1,
         }}
       >
         START YOUR EXPERIENCE
       </Typography>
+              <Box
+                sx={{
+                  width: 260,
+                  height: 3,
+                  backgroundColor: "#80131F",
+                  mx: "auto",
+                  mb: 2,
+                }}
+              />
 
       {/* Title */}
       <Typography
         variant="h5"
         fontWeight={700}
-        sx={{ mt: 1, mb: 2, color: "#111" }}
+        sx={{ mt: 1, mb: 2, color: "#111",
+          fontSize: { xs: "0.95rem", md: "2.5rem" }, }
+      }
       >
         {cta.title}
       </Typography>
@@ -46,7 +59,7 @@ export default function CTASection({ cta }) {
           mx: "auto",
           mb: 4,
           color: "text.secondary",
-          fontSize: { xs: "0.95rem", md: "1rem" },
+          fontSize: { xs: "0.95rem", md: "1.2rem" },
           lineHeight: 1.7,
         }}
       >

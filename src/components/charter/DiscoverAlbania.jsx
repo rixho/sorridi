@@ -31,7 +31,7 @@ export default function DiscoverAlbania() {
         FIND YOUR YACHT
         <Box
           sx={{
-            width: 60,
+            width:180,
             height: 2,
             backgroundColor: "#8B1E2D",
             mx: "auto",
@@ -49,7 +49,7 @@ export default function DiscoverAlbania() {
           color: "#0d1b2a",
         }}
       >
-        Ready to Discover Albania?
+        READY TO DISCOVER ALBANIA?
       </Typography>
 
       {/* Subtitle */}

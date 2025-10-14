@@ -11,13 +11,14 @@ export default function FeaturedYachts() {
     <Box
       sx={{
         position: "relative",
-        width: "100vw", // ✅ full width nga borderi majtas në djathtas
+        width: "100vw",
         left: "50%",
         marginLeft: "-50.5vw",
-        py: { xs: 8, md: 12 },
+        py: { xs: 5, md: 8 }, // 🔹 më kompakt
         backgroundColor: "#FFFFFF",
         textAlign: "center",
         fontFamily: "'Poppins', sans-serif",
+        borderTop: "1px solid rgba(0,0,0,0.08)",
       }}
     >
       {/* Titulli sipër */}
@@ -36,22 +37,22 @@ export default function FeaturedYachts() {
       {/* Vijë e kuqe poshtë titullit */}
       <Box
         sx={{
-          width: "70px",
+          width: "150px",
           height: "2px",
           backgroundColor: "#80131F",
           mx: "auto",
-          mb: { xs: 6, md: 8 },
+          mb: { xs: 5, md: 7 },
         }}
       />
 
-      {/* Kartat e jahteve */}
+      {/* Kartat */}
       <Grid
         container
         spacing={{ xs: 2, sm: 3, md: 4 }}
         justifyContent="center"
         alignItems="stretch"
         sx={{
-          px: 0, // ✅ pa padding anash
+          px: 0,
           width: "100%",
           margin: 0,
         }}
@@ -76,34 +77,47 @@ export default function FeaturedYachts() {
                 borderRadius: 0,
                 overflow: "hidden",
                 backgroundColor: "#fff",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                boxShadow: "0 3px 8px rgba(0, 0, 0, 0.08)",
                 transition: "transform 0.4s ease",
-                "&:hover": { transform: "scale(1.02)" },
+                "&:hover": { transform: "scale(1.01)" },
               }}
             >
-              {/* Foto e jahtit */}
+              {/* Foto e jahtit - plotësisht e paprërë */}
               <Box
-                component="img"
-                src={y.images[0]}
-                alt={y.name}
                 sx={{
+                  position: "relative",
                   width: "100%",
-                  height: { xs: 300, sm: 380, md: 480, lg: 560 },
-                  objectFit: "cover",
-                  display: "block",
+                  backgroundColor: "#fff",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
-              />
+              >
+                <Box
+                  component="img"
+                  src={y.images[0]}
+                  alt={y.name}
+                  loading="lazy"
+                  sx={{
+                    width: "100%",
+                    height: { xs: 260, sm: 340, md: 400, lg: 440 }, // 🔹 pak më e vogël
+                    objectFit: "contain", // ✅ mos pritet asnjëherë
+                    backgroundColor: "#fff",
+                    transition: "transform 0.6s ease",
+                  }}
+                />
+              </Box>
 
               {/* Përmbajtja e kartës */}
-              <Box sx={{ py: 4, px: { xs: 2, sm: 3, md: 5 } }}>
+              <Box sx={{ py: 3, px: { xs: 2, sm: 3, md: 4 } }}>
                 {/* Emri */}
                 <Typography
                   sx={{
                     fontWeight: 700,
-                    fontSize: { xs: "1.3rem", sm: "1.6rem", md: "1.8rem" },
+                    fontSize: { xs: "1.3rem", sm: "1.5rem", md: "1.7rem" },
                     color: "#141F2F",
                     textTransform: "uppercase",
-                    mb: 1,
+                    mb: 0.8,
                   }}
                 >
                   {y.name}
@@ -116,7 +130,7 @@ export default function FeaturedYachts() {
                     height: "2px",
                     backgroundColor: "#80131F",
                     mx: "auto",
-                    mb: 1.5,
+                    mb: 1,
                   }}
                 />
 
@@ -124,10 +138,10 @@ export default function FeaturedYachts() {
                 <Typography
                   sx={{
                     fontWeight: 600,
-                    fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
+                    fontSize: { xs: "0.9rem", sm: "1rem", md: "1.05rem" },
                     color: "#454545",
                     textTransform: "uppercase",
-                    mb: 2.5,
+                    mb: 2,
                   }}
                 >
                   {y.model}
@@ -152,14 +166,14 @@ export default function FeaturedYachts() {
                       xs={3}
                       sx={{
                         borderRight: idx < 3 ? "1px solid #E5E5E5" : "none",
-                        py: 1,
+                        py: 0.8,
                       }}
                     >
                       <Typography
                         sx={{
                           fontWeight: 700,
                           color: "#D4AF37",
-                          fontSize: { xs: "1rem", sm: "1.1rem" },
+                          fontSize: { xs: "0.95rem", sm: "1.05rem" },
                         }}
                       >
                         {item.value}
@@ -184,7 +198,7 @@ export default function FeaturedYachts() {
       </Grid>
 
       {/* Butoni poshtë */}
-      <Box sx={{ mt: { xs: 8, md: 10 } }}>
+      <Box sx={{ mt: { xs: 6, md: 8 } }}>
         <Button
           component={Link}
           to="/yachts-for-charter"
@@ -193,9 +207,9 @@ export default function FeaturedYachts() {
             bgcolor: "#141F2F",
             color: "#FFFFFF",
             px: { xs: 4, md: 6 },
-            py: { xs: 1.4, md: 1.8 },
+            py: { xs: 1.2, md: 1.5 },
             fontWeight: 600,
-            fontSize: { xs: "1rem", md: "1.1rem" },
+            fontSize: { xs: "1rem", md: "1.05rem" },
             borderRadius: 0,
             letterSpacing: "0.5px",
             "&:hover": { bgcolor: "#0D1623" },

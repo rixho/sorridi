@@ -8,9 +8,12 @@ import {
   Divider,
   IconButton,
   Grid,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
+// ✅ Ikonat rrethore
 const createCircleIcon = (imageUrl) =>
   L.divIcon({
     html: `<div style="
@@ -28,15 +31,18 @@ const createCircleIcon = (imageUrl) =>
     iconAnchor: [22, 22],
   });
 
-// Fit bounds for all markers
-function FitBounds({ markers }) {
+// ✅ FitBounds për të fokusuar markerët
+function FitBounds({ markers, isMobile }) {
   const map = useMap();
   useEffect(() => {
     if (markers.length > 0) {
       const bounds = L.latLngBounds(markers.map((m) => [m.lat, m.lng]));
-      map.fitBounds(bounds, { padding: [200, 200], maxZoom: 12 });
+      map.fitBounds(bounds, {
+        padding: isMobile ? [80, 80] : [200, 200],
+        maxZoom: isMobile ? 8.3 : 12,
+      });
     }
-  }, [markers, map]);
+  }, [markers, map, isMobile]);
   return null;
 }
 
@@ -44,6 +50,10 @@ export default function Locations({ mapMarkers = [], locations = [] }) {
   const [selected, setSelected] = useState(null);
   const [activeImage, setActiveImage] = useState(null);
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  // ✅ Kur klikojmë marker, hapim drawer-in
   const handleMarkerClick = (marker) => {
     const loc = locations.find((l) => l.title.includes(marker.title));
     if (loc) {
@@ -58,81 +68,115 @@ export default function Locations({ mapMarkers = [], locations = [] }) {
   return (
     <Box
       sx={{
-        width: "100vw",
         position: "relative",
+        width: "100vw",
         left: "50%",
         marginLeft: "-50.5vw",
-        py: { xs: 6, md: 10 },
-        backgroundColor: "#f9f9f9",
+        backgroundColor: "#fff",
+        overflow: "hidden",
+        py: { xs: 8, md: 12 },
       }}
     >
       {/* Header */}
-      <Box textAlign="center" mb={4}>
+      <Box textAlign="center" mb={4} sx={{ px: 2 }}>
         <Typography
           variant="overline"
-          sx={{ color: "#8B1E2D", letterSpacing: 2 }}
+          sx={{ color: "#0d1b2a",
+              letterSpacing: 2,
+              display: "block",
+              mb: 1,}}
         >
           SECLUDED SHORES & UNTAMED BEAUTY
         </Typography>
-        <Typography variant="h6" fontWeight={700}>
+         <Divider
+                  sx={{
+                    width: 360,
+                    mx: "auto",
+                    borderBottomWidth: 2,
+                    borderColor: "#8B1E2D",
+                    mb: 2,
+                  }}
+                />
+        <Typography
+          variant="h6"
+          fontWeight={700}
+          sx={{  fontWeight: 700,
+            fontSize: { xs: "1.8rem", sm: "2rem", md: "2.5rem" },
+            textTransform: "uppercase",
+            color: "#141F2F",
+            lineHeight: 1.05,}}
+        >
           Hidden coves, crystal waters, and dramatic cliffs
         </Typography>
       </Box>
 
-      {/* Map */}
-      <MapContainer
-        center={[40.05, 19.8]}
-        zoom={9}
-        style={{
-          height: "500px",
-          width: "100%",
-          borderRadius: "12px",
+      {/* 🌍 Harta */}
+      <Box
+        sx={{
+          position: "relative",
+          width: "100vw",
+          left: "50%",
+          marginLeft: "-50vw",
+          height: isMobile ? "100vh" : { xs: 500, md: 700 },
           overflow: "hidden",
         }}
-        scrollWheelZoom={false}
       >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OSM</a>'
-        />
-        <FitBounds markers={mapMarkers} />
+        <MapContainer
+          center={isMobile ? [39.95, 19.8] : [40.05, 19.8]}
+          zoom={isMobile ? 8.3 : 9.5}
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+          scrollWheelZoom={false}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
+          />
+          <FitBounds markers={mapMarkers} isMobile={isMobile} />
 
-        {mapMarkers
-          .filter((m) => m.lat && m.lng)
-          .map((m, i) => (
-            <Marker
-              key={i}
-              position={[m.lat, m.lng]}
-              icon={createCircleIcon(m.image || "/media/marker.png")}
-              eventHandlers={{ click: () => handleMarkerClick(m) }}
-            />
-          ))}
-      </MapContainer>
+          {mapMarkers
+            .filter((m) => m.lat && m.lng)
+            .map((m, i) => (
+              <Marker
+                key={i}
+                position={[m.lat, m.lng]}
+                icon={createCircleIcon(m.image || "/media/marker.png")}
+                eventHandlers={{ click: () => handleMarkerClick(m) }}
+              />
+            ))}
+        </MapContainer>
+      </Box>
 
-      {/* Drawer */}
+      {/* Drawer për informacionet */}
       <Drawer
         anchor="right"
         open={!!selected}
         onClose={() => setSelected(null)}
         PaperProps={{
-          sx: { width: { xs: "100%", md: 460 }, p: 3 },
+          sx: {
+            width: { xs: "100%", md: 460 },
+            p: 3,
+            backgroundColor: "#fafafa",
+          },
         }}
       >
         {selected && (
           <>
-            {/* Header inside drawer */}
             <Box
               display="flex"
               justifyContent="space-between"
               alignItems="center"
             >
-              <Typography variant="h6" fontWeight={700}>
+              <Typography variant="h6" fontWeight={700} color="#0D1B2A">
                 {selected.title}
               </Typography>
               <IconButton onClick={() => setSelected(null)}>
                 <CloseIcon />
               </IconButton>
             </Box>
+
             <Divider sx={{ my: 2 }} />
 
             {/* Foto kryesore */}
@@ -179,7 +223,7 @@ export default function Locations({ mapMarkers = [], locations = [] }) {
             <Typography
               variant="body1"
               color="text.secondary"
-              sx={{ mb: 2, whiteSpace: "pre-line" }}
+              sx={{ mb: 2, lineHeight: 1.8 }}
             >
               {selected.text}
             </Typography>

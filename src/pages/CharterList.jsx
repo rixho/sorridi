@@ -25,10 +25,14 @@ export default function CharterList() {
           variant="h5"
           fontWeight={700}
           sx={{
-            mb: 2,
-            color: "#0d1b2a",
+            color: "#141F2F", // ✅ ngjyra që the për headerin
             textTransform: "uppercase",
-            letterSpacing: "1px",
+            fontFamily: "'Poppins', sans-serif",
+            fontWeight: 600, // ✅ SemiBold
+            letterSpacing: 0,
+            fontSize: { xs: "1.8rem", sm: "2.1rem", md: "2.4rem", lg: "2.6rem" },
+            lineHeight: 1.3,
+            mb: 4,
           }}
         >
           Set Sail on Your Perfect Albanian Charter Escape
@@ -37,9 +41,12 @@ export default function CharterList() {
         <Typography
           variant="body1"
           sx={{
-            color: "#333",
-            fontSize: { xs: "1rem", md: "1.15rem" },
-            lineHeight: 1.8,
+            fontFamily: "'Poppins', sans-serif",
+            fontWeight: 300,
+            fontSize: { xs: "1rem", sm: "1.05rem", md: "1.15rem" },
+            lineHeight: 1.5,
+            color: "#454545",
+            mb: 3,
           }}
         >
           Discover hand-picked yachts and tailor-made itineraries along Albania’s

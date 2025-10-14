@@ -25,12 +25,14 @@ export default function BespokeExperiences() {
           variant="h5"
           fontWeight={700}
           sx={{
-            color: "#0d1b2a",
+            color: "#141F2F", // ✅ ngjyra që the për headerin
             textTransform: "uppercase",
-            letterSpacing: 1,
-            mb: { xs: 4, md: 5 },
-            fontSize: { xs: "1.5rem", md: "1.9rem" },
+            fontFamily: "'Poppins', sans-serif",
+            fontWeight: 600, // ✅ SemiBold
+            letterSpacing: 0,
+            fontSize: { xs: "1.8rem", sm: "2.1rem", md: "2.4rem", lg: "2.6rem" },
             lineHeight: 1.3,
+            mb: 4,
           }}
         >
           BESPOKE EXPERIENCES – BEYOND CHARTERING
@@ -40,12 +42,12 @@ export default function BespokeExperiences() {
         <Typography
           variant="body1"
           sx={{
-            color: "text.secondary",
-            maxWidth: 900,
-            mx: "auto",
-            lineHeight: 2.1,
-            fontSize: { xs: "1rem", md: "1.1rem" },
-            letterSpacing: 0.2,
+             fontFamily: "'Poppins', sans-serif",
+            fontWeight: 300,
+            fontSize: { xs: "1rem", sm: "1.05rem", md: "1.15rem" },
+            lineHeight: 1.5,
+            color: "#454545",
+            mb: 3,
           }}
         >
           Discover hand-picked yachts and tailor-made itineraries along Albania’s

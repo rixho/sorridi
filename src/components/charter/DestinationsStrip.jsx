@@ -1,7 +1,20 @@
 // src/components/sections/DestinationsStrip.jsx
-import React, { useState } from "react";
-import { Box, Typography, Button, Grid } from "@mui/material";
+import React, { useState, useRef, useEffect } from "react";
+import {
+  Box,
+  Typography,
+  Button,
+  Grid,
+  Divider,
+  IconButton,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const features = [
   {
@@ -27,8 +40,75 @@ const features = [
   },
 ];
 
+// Custom arrows for mobile carousel
+const NextArrow = ({ onClick }) => (
+  <IconButton
+    onClick={onClick}
+    sx={{
+      position: "absolute",
+      right: 14,
+      top: "50%",
+      transform: "translateY(-50%)",
+      color: "#fff",
+      backgroundColor: "rgba(0,0,0,0.4)",
+      "&:hover": { backgroundColor: "rgba(0,0,0,0.6)" },
+      zIndex: 3,
+    }}
+  >
+    <ArrowForwardIos />
+  </IconButton>
+);
+
+const PrevArrow = ({ onClick }) => (
+  <IconButton
+    onClick={onClick}
+    sx={{
+      position: "absolute",
+      left: 14,
+      top: "50%",
+      transform: "translateY(-50%)",
+      color: "#fff",
+      backgroundColor: "rgba(0,0,0,0.4)",
+      "&:hover": { backgroundColor: "rgba(0,0,0,0.6)" },
+      zIndex: 3,
+    }}
+  >
+    <ArrowBackIos />
+  </IconButton>
+);
+
 export default function DestinationsStrip() {
   const [hovered, setHovered] = useState(null);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const textRefs = useRef({});
+  const [lineWidths, setLineWidths] = useState({});
+  useEffect(() => {
+    const updateWidths = () => {
+      const newWidths = {};
+      Object.entries(textRefs.current).forEach(([id, el]) => {
+        if (el) newWidths[id] = el.offsetWidth + 20;
+      });
+      setLineWidths(newWidths);
+    };
+    updateWidths();
+    window.addEventListener("resize", updateWidths);
+    return () => window.removeEventListener("resize", updateWidths);
+  }, []);
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    speed: 700,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+  };
 
   return (
     <Box
@@ -37,145 +117,220 @@ export default function DestinationsStrip() {
         width: "100vw",
         left: "50%",
         marginLeft: "-50.5vw",
-        height: { xs: "auto", md: "90vh" }, // më e madhe për desktop
         overflow: "hidden",
-        display: "flex",
-        flexDirection: { xs: "column", md: "row" },
       }}
     >
-      <Grid
-        container
-        sx={{
-          width: "100%",
-          height: "100%",
-          flexDirection: { xs: "column", md: "row" },
-        }}
-      >
-        {features.map((f, idx) => {
-          const flexValue = hovered
-            ? hovered === f.id
-              ? 2.2
-              : 0.6
-            : 1; // efekt smooth kur një kolonë është hover
-
-          return (
-            <Grid
-              key={f.id}
-              item
-              onMouseEnter={() => setHovered(f.id)}
-              onMouseLeave={() => setHovered(null)}
-              sx={{
-                flex: { xs: "none", md: flexValue },
-                height: { xs: "65vh", sm: "70vh", md: "100%" },
-                transition: "flex 0.7s ease",
-                position: "relative",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-                cursor: "pointer",
-                overflow: "hidden",
-                borderLeft: {
-                  md: idx !== 0 ? "1px solid rgba(255,255,255,0.3)" : "none",
-                },
-                borderTop: {
-                  xs: idx !== 0 ? "1px solid rgba(255,255,255,0.3)" : "none",
-                  md: "none",
-                },
-              }}
-            >
-              {/* Background image */}
-              <Box
-                sx={{
-                  position: "absolute",
-                  inset: 0,
-                  backgroundImage: `url(${f.image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  transition: "all 0.6s ease",
-                  filter:
-                    hovered === f.id
-                      ? "brightness(0.9)"
-                      : "brightness(0.45) grayscale(30%)",
-                  transform: hovered === f.id ? "scale(1.07)" : "scale(1)",
-                }}
-              />
-
-              {/* Overlay tekst + buton */}
-              <Box
-                sx={{
-                  position: "absolute",
-                  bottom: { xs: 30, md: 50 },
-                  left: 0,
-                  right: 0,
-                  textAlign: "center",
-                  color: "#fff",
-                  px: 2,
-                  zIndex: 2,
-                }}
-              >
-                {/* Titulli */}
-                <Typography
-                  variant="h5"
-                  fontWeight={700}
-                  sx={{
-                    textTransform: "uppercase",
-                    letterSpacing: 1.5,
-                    fontSize: { xs: "1.1rem", sm: "1.3rem", md: "1.6rem" },
-                    mb: 1,
-                  }}
-                >
-                  {f.title}
-                </Typography>
-
-                {/* Vijë e kuqe */}
+      {/* 📱 Mobile carousel fullscreen */}
+      {isMobile && (
+        <Box sx={{ height: "100vh", width: "100vw", position: "relative" }}>
+          <Slider {...sliderSettings}>
+            {features.map((f) => (
+              <Box key={f.id} sx={{ height: "100vh", width: "100vw", position: "relative" }}>
                 <Box
                   sx={{
-                    width: "70px",
-                    height: 2,
-                    bgcolor: "#8B1E2D",
-                    mx: "auto",
-                    mb: 2,
+                    position: "absolute",
+                    inset: 0,
+                    backgroundImage: `url(${f.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    filter: "brightness(0.65)",
                   }}
                 />
-
-                {/* Butoni */}
-                <Button
-                  component={Link}
-                  to={f.link}
-                  variant="outlined"
+                <Box
                   sx={{
-                    borderColor: "#fff",
-                    color: "#FFD700",
-                    fontWeight: 600,
-                    px: { xs: 2, md: 3 },
-                    py: { xs: 0.8, md: 1.1 },
-                    fontSize: { xs: "0.8rem", md: "0.95rem" },
-                    letterSpacing: 0.8,
-                    "&:hover": {
-                      bgcolor: "#fff",
-                      color: "#000",
-                    },
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: "45%",
+                    background: "linear-gradient(180deg, transparent, rgba(0,0,0,0.85))",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-end",
+                    alignItems: "center",
+                    color: "#fff",
+                    textAlign: "center",
+                    px: 3,
+                    pb: 6,
                   }}
                 >
-                  {f.button}
-                </Button>
-              </Box>
+                  <Typography
+                    ref={(el) => (textRefs.current[f.id] = el)}
+                    variant="h4"
+                    fontWeight={700}
+                    sx={{
+                      color: "#fff",
+                      textTransform: "uppercase",
+                      letterSpacing: 1.5,
+                      fontSize: "1.6rem",
+                      textShadow: "0 4px 10px rgba(0,0,0,0.8)",
+                    }}
+                  >
+                    {f.title}
+                  </Typography>
 
-              {/* Overlay gradient për kontrast */}
-              <Box
-                sx={{
-                  position: "absolute",
-                  inset: 0,
-                  background:
-                    "linear-gradient(to bottom, rgba(0,0,0,0.2) 30%, rgba(0,0,0,0.6) 100%)",
-                  zIndex: 1,
-                }}
-              />
-            </Grid>
-          );
-        })}
-      </Grid>
+                  <Divider
+                    sx={{
+                      bgcolor: "#8B1E2D",
+                      width: `${lineWidths[f.id] || 90}px`,
+                      height: 2,
+                      mx: "auto",
+                      mt: 1.5,
+                      mb: 3,
+                      transition: "width 0.3s ease",
+                    }}
+                  />
+
+                  <Button
+                    component={Link}
+                    to={f.link}
+                    variant="outlined"
+                    sx={{
+                      borderColor: "#fff",
+                      color: "#D4AF37",
+                      px: 3,
+                      py: 0.9,
+                      fontWeight: 600,
+                      fontSize: "0.95rem",
+                      borderWidth: 2,
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        transform: "scale(1.05)",
+                        boxShadow: "0 0 12px rgba(212,175,55,0.6)",
+                      },
+                    }}
+                  >
+                    {f.button}
+                  </Button>
+                </Box>
+              </Box>
+            ))}
+          </Slider>
+        </Box>
+      )}
+
+      {/* 🖥️ Desktop version */}
+      {!isMobile && (
+        <Box sx={{ height: "90vh" }}>
+          <Grid container sx={{ height: "100%", flexDirection: "row" }}>
+            {features.map((f, idx) => {
+              let flexValue = 1;
+              if (hovered) flexValue = hovered === f.id ? 2.2 : 0.6;
+
+              return (
+                <Grid
+                  key={f.id}
+                  item
+                  onMouseEnter={() => setHovered(f.id)}
+                  onMouseLeave={() => setHovered(null)}
+                  sx={{
+                    flex: flexValue,
+                    height: "100%",
+                    transition: "flex 0.6s ease",
+                    position: "relative",
+                    display: "flex",
+                    alignItems: "flex-end",
+                    justifyContent: "center",
+                    overflow: "hidden",
+                    cursor: "pointer",
+                    borderLeft: idx !== 0 ? "1px solid rgba(255,255,255,0.3)" : "none",
+                  }}
+                >
+                  {/* Background */}
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      inset: 0,
+                      backgroundImage: `url(${f.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      transition: "all 0.6s ease",
+                      transform: hovered === f.id ? "scale(1.08)" : "scale(1)",
+                      filter:
+                        hovered === f.id
+                          ? "brightness(0.9)"
+                          : "brightness(0.45) grayscale(40%)",
+                    }}
+                  />
+
+                  {/* Gradient */}
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      inset: 0,
+                      background:
+                        "linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 60%, transparent 100%)",
+                    }}
+                  />
+
+                  {/* Text & Button */}
+                  <Box
+                    sx={{
+                      position: "relative",
+                      zIndex: 2,
+                      textAlign: "center",
+                      mb: 10,
+                      px: 4,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Typography
+                      ref={(el) => (textRefs.current[f.id] = el)}
+                      variant="h4"
+                      fontWeight={700}
+                      sx={{
+                        color: "#fff",
+                        textTransform: "uppercase",
+                        letterSpacing: 1.5,
+                        fontSize: "2rem",
+                        textShadow: "0 4px 10px rgba(0,0,0,0.8)",
+                      }}
+                    >
+                      {f.title}
+                    </Typography>
+
+                    <Divider
+                      sx={{
+                        bgcolor: "#8B1E2D",
+                        width: `${lineWidths[f.id] || 100}px`,
+                        height: 2,
+                        mx: "auto",
+                        mt: 1.5,
+                        mb: 3,
+                        transition: "width 0.3s ease",
+                      }}
+                    />
+
+                    <Button
+                      component={Link}
+                      to={f.link}
+                      variant="outlined"
+                      sx={{
+                        borderColor: "#fff",
+                        color: "#D4AF37",
+                        px: 3.5,
+                        py: 1,
+                        fontSize: "1rem",
+                        borderWidth: 2,
+                        fontWeight: 600,
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          transform: "scale(1.05)",
+                          boxShadow: "0 0 12px rgba(212,175,55,0.6)",
+                        },
+                      }}
+                    >
+                      {f.button}
+                    </Button>
+                  </Box>
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Box>
+      )}
     </Box>
   );
 }

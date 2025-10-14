@@ -9,7 +9,7 @@ export default function AffiliateSection() {
         width: "100vw",
         position: "relative",
         left: "50%",
-        marginLeft: "-50vw",
+        marginLeft: "-50.5vw",
         backgroundColor: "#F7F7F7",
         textAlign: "center",
         py: { xs: 10, md: 18 }, // më shumë hapësirë sipër e poshtë

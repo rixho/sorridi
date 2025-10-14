@@ -85,22 +85,22 @@ export default function DestinationsCarousel() {
         <Typography
           variant="overline"
           sx={{
-            color: "#80131F",
-            letterSpacing: 2,
-            fontWeight: 600,
-            textTransform: "uppercase",
+             fontWeight: 400,
+          fontSize: { xs: "0.95rem", sm: "1rem" },
+          color: "#141F2F",
+          letterSpacing: "0.5px",
+          mb: 1,
           }}
         >
           Pre-Made Itineraries
         </Typography>
         <Box
           sx={{
-            width: 60,
-            height: 3,
-            backgroundColor: "#80131F",
-            mx: "auto",
-            my: 2,
-            borderRadius: 2,
+             width: 250,
+             height: "2px",
+          backgroundColor: "#80131F",
+          mx: "auto",
+          mb: { xs: 6, md: 8 },
           }}
         />
         <Typography

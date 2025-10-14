@@ -30,33 +30,33 @@ export default function CharterYachts() {
         <Typography
           variant="overline"
           sx={{
-            color: "#80131F",
-            letterSpacing: 2,
-            mb: 1,
-            fontWeight: 600,
-            fontSize: "0.85rem",
+              fontWeight: 400,
+          fontSize: { xs: "0.95rem", sm: "1rem" },
+          color: "#141F2F",
+          letterSpacing: "0.5px",
+          mb: 1,
           }}
         >
           Find Your Perfect Charter
         </Typography>
         <Box
           sx={{
-            width: 60,
-            height: 3,
-            backgroundColor: "#80131F",
-            mx: "auto",
-            my: 2,
-            borderRadius: 2,
+            width: 300,
+             height: "2px",
+          backgroundColor: "#80131F",
+          mx: "auto",
+          mb: { xs: 6, md: 8 },
           }}
         />
         <Typography
           variant="h4"
           fontWeight={700}
-          sx={{
-            color: "#141F2F",
+          sx={{           
+            fontWeight: 700,
+            fontSize: { xs: "1.8rem", sm: "2rem", md: "2.5rem" },
             textTransform: "uppercase",
-            fontSize: { xs: "1.6rem", md: "2.2rem" },
-            letterSpacing: 0.5,
+            color: "#141F2F",
+            lineHeight: 1.05,
           }}
         >
           Explore the Adriatic & Ionian’s Most Exclusive Charter Yachts

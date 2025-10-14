@@ -101,17 +101,33 @@ export default function DiscoverAlbania() {
         }}
       >
         <Typography
-          variant="overline"
-          sx={{ color: "#8B1E2D", letterSpacing: 2 }}
-        >
-          FIND YOUR YACHT
-        </Typography>
+                variant="overline"
+                sx={{
+                  color: "#0d1b2a",
+                  letterSpacing: 2,
+                  display: "block",
+                  mb: 1,
+                  position: "relative",
+                  fontSize: "0.85rem",
+                }}
+              >
+                FIND YOUR YACHT
+                <Box
+                  sx={{
+                    width:180,
+                    height: 2,
+                    backgroundColor: "#8B1E2D",
+                    mx: "auto",
+                    mt: 1,
+                  }}
+                />
+              </Typography>
         <Typography
           variant="h4"
           fontWeight={700}
           sx={{ mt: 2, mb: 3, color: "#0d1b2a" }}
         >
-          Ready to Discover Albania?
+        READY TO DISCOVER ALBANIA?
         </Typography>
         <Typography
           variant="body1"

@@ -1,8 +1,18 @@
-html, body, #root { height: 100%; }
-* { box-sizing: border-box; }
-img { display:block; max-width:100%; }
-
-:root {
-  --ring: 0 0% 100%;
+/* --- FIX: ndalon scroll horizontal dhe bounce në mobile --- */
+html, body {
+  overflow-x: hidden;   /* ❌ ndalon scroll anash */
+  overflow-y: auto;     /* ✅ lejon scroll vertikal kur duhet */
+  overscroll-behavior: none; /* ndalon “elastic scroll” në iOS */
 }
-a { text-decoration: none; color: inherit; }
+
+/* Root element kontrollon shtrirjen pa tejkaluar gjerësinë e ekranit */
+#root {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Fix për seksione që përdorin 100vw (si HeroSection, FeaturedYachts, etj.) */
+section, .fullwidth, .full-width {
+  max-width: 100%;
+  overflow-x: hidden;
+}

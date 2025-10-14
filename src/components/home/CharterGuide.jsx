@@ -60,18 +60,18 @@ export default function CharterGuide() {
 
         <Box
           sx={{
-            width: 50,
+            width: 100,
             height: 3,
             backgroundColor: "#80131F",
             mx: "auto",
-            mb: 0.8,
+            mb: 2,
           }}
         />
 
         <Typography
           sx={{
             fontWeight: 700,
-            fontSize: { xs: "1.3rem", sm: "1.6rem", md: "1.7rem" },
+            fontSize: { xs: "1.8rem", sm: "2rem", md: "2.5rem" },
             textTransform: "uppercase",
             color: "#141F2F",
             lineHeight: 1.05,
@@ -116,7 +116,7 @@ export default function CharterGuide() {
             mb: 2,
             color: "#454545",
             fontWeight: 400,
-            fontSize: { xs: "0.85rem", md: "0.9rem" },
+            fontSize: { xs: "0.85rem", md: "1.2rem" },
             lineHeight: 1.45,
           }}
         >
@@ -130,12 +130,12 @@ export default function CharterGuide() {
           sx={{
             bgcolor: "#141F2F",
             color: "#FFFFFF",
-            px: { xs: 3, md: 3.5 },
-            py: { xs: 0.9, md: 1.1 },
+            px: { xs: 4, md: 6 },
+            py: { xs: 1.4, md: 1.8 },
             fontWeight: 600,
-            letterSpacing: 0.3,
+            fontSize: { xs: "1rem", md: "1.1rem" },
             borderRadius: 0,
-            fontSize: { xs: "0.78rem", md: "0.82rem" },
+            letterSpacing: "0.5px",
             "&:hover": { bgcolor: "#0D1623" },
           }}
           onClick={() => setOpen(true)}

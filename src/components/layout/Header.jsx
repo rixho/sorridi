@@ -36,14 +36,12 @@ export default function Header() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  // ✅ referencë për AppBar
   const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
 
-  // ✅ Mat automatikisht lartësinë e header-it për çdo ekran
   useLayoutEffect(() => {
     if (headerRef.current) {
-      const updateHeight = () => setHeaderHeight(headerRef.current.offsetHeight);
+      const updateHeight = () => setHeaderHeight(headerRef.current.offsetHeight || 80);
       updateHeight();
       window.addEventListener("resize", updateHeight);
       return () => window.removeEventListener("resize", updateHeight);
@@ -72,6 +70,7 @@ export default function Header() {
             py: 0,
             transition: "transform 0.3s ease-in-out",
             zIndex: 1300,
+            overflow: "hidden", // ✅ ndalon çdo shtyrje jashtë
           }}
         >
           <Toolbar
@@ -80,20 +79,25 @@ export default function Header() {
               maxWidth: "1400px",
               mx: "auto",
               width: "100%",
-              minHeight: { xs: 64, md: 80 }, // minimum për aksesibilitet
+              minHeight: { xs: 64, md: 80 },
+              px: { xs: 2, md: 3 },
             }}
           >
             {/* Logo */}
             <Box
               component={Link}
               to="/"
-              sx={{ display: "flex", alignItems: "center", textDecoration: "none" }}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                textDecoration: "none",
+              }}
             >
               <Box
                 component="img"
                 src="/media/logo-gold.png"
                 alt="Aura Voyage Logo"
-                sx={{ height: 55, mr: 2 }}
+                sx={{ height: 50, mr: 1.5 }}
               />
             </Box>
 
@@ -148,7 +152,11 @@ export default function Header() {
                   open={mobileOpen}
                   onClose={() => setMobileOpen(false)}
                   PaperProps={{
-                    sx: { backgroundColor: "#141F2F", color: "#fff" },
+                    sx: {
+                      backgroundColor: "#141F2F",
+                      color: "#fff",
+                      pt: 2,
+                    },
                   }}
                 >
                   <List sx={{ width: 240 }}>
@@ -187,8 +195,13 @@ export default function Header() {
         </AppBar>
       </HideOnScroll>
 
-      {/* ✅ Offset dinamik që përshtatet automatikisht */}
-      <Box sx={{ height: `${headerHeight}px` }} />
+      {/* ✅ Offset i garantuar, që seksionet fillojnë pas header-it */}
+      <Box
+        sx={{
+          height: { xs: headerHeight || 64, md: headerHeight || 80 },
+          width: "100%",
+        }}
+      />
     </>
   );
 }

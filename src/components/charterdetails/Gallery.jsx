@@ -8,16 +8,27 @@ import {
   Stack,
   Divider,
   Container,
+  Fade,
 } from "@mui/material";
 
 export default function Gallery({ yacht }) {
   const [mainImage, setMainImage] = useState(yacht?.images?.[0]);
+  const [fadeIn, setFadeIn] = useState(true);
+
+  const handleImageClick = (img) => {
+    if (img === mainImage) return;
+    setFadeIn(false);
+    setTimeout(() => {
+      setMainImage(img);
+      setFadeIn(true);
+    }, 150); // smooth fade transition
+  };
 
   return (
     <Box
       sx={{
         position: "relative",
-        width: "100vw", // ✅ Full nga borderi majtas në të djathtë
+        width: "100vw",
         left: "50%",
         marginLeft: "-50.5vw",
         py: { xs: 8, md: 12 },
@@ -31,7 +42,7 @@ export default function Gallery({ yacht }) {
           <Typography
             variant="overline"
             sx={{
-              color: "#8B1E2D",
+              color: "#0d1b2a",
               letterSpacing: 2,
               display: "block",
               mb: 1,
@@ -43,7 +54,7 @@ export default function Gallery({ yacht }) {
           {/* Vija e kuqe direkt sipër GALLERY */}
           <Divider
             sx={{
-              width: 70,
+              width: 170,
               height: 3,
               bgcolor: "#8B1E2D",
               mx: "auto",
@@ -74,20 +85,22 @@ export default function Gallery({ yacht }) {
         >
           {/* Foto kryesore */}
           <Grid item xs={12} md={9}>
-            <Box
-              component="img"
-              src={mainImage}
-              alt={yacht.name}
-              sx={{
-                width: "100%",
-                height: { xs: 360, sm: 460, md: 600, lg: 680 },
-                objectFit: "contain", // ✅ fotoja përshtatet plotësisht, pa u prerë
-                backgroundColor: "#fff",
-                borderRadius: 2,
-                boxShadow: "0 8px 20px rgba(0,0,0,0.18)",
-                transition: "all 0.4s ease",
-              }}
-            />
+            <Fade in={fadeIn} timeout={500}>
+              <Box
+                component="img"
+                src={mainImage}
+                alt={yacht.name}
+                sx={{
+                  width: "100%",
+                  height: { xs: 360, sm: 460, md: 600, lg: 680 },
+                  objectFit: "contain", // ✅ ruan cilesine origjinale
+                  backgroundColor: "#fff",
+                  borderRadius: 2,
+                  boxShadow: "0 8px 20px rgba(0,0,0,0.18)",
+                  transition: "all 0.4s ease",
+                }}
+              />
+            </Fade>
           </Grid>
 
           {/* Thumbnails */}
@@ -99,11 +112,12 @@ export default function Gallery({ yacht }) {
                   component="img"
                   src={img}
                   alt={`${yacht.name}-${i}`}
-                  onClick={() => setMainImage(img)}
+                  onClick={() => handleImageClick(img)}
+                  loading="lazy"
                   sx={{
                     width: "100%",
                     height: { xs: 100, sm: 130, md: 150 },
-                    objectFit: "contain", // ✅ mos priten
+                    objectFit: "cover", // shfaqet plot në thumbnail
                     backgroundColor: "#fff",
                     borderRadius: 2,
                     cursor: "pointer",
@@ -117,7 +131,8 @@ export default function Gallery({ yacht }) {
                         ? "0 6px 14px rgba(0,0,0,0.25)"
                         : "0 3px 8px rgba(0,0,0,0.1)",
                     "&:hover": {
-                      transform: "scale(1.04)",
+                      transform: "scale(1.05)",
+                      boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
                     },
                   }}
                 />
@@ -128,11 +143,7 @@ export default function Gallery({ yacht }) {
 
         {/* Butoni për broshurën */}
         <Box textAlign="center" mt={{ xs: 6, md: 8 }}>
-          <a
-            href="/file/test.pdf"
-            download
-            style={{ textDecoration: "none" }}
-          >
+          <a href="/file/test.pdf" download style={{ textDecoration: "none" }}>
             <Button
               variant="contained"
               sx={{

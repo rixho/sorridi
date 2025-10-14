@@ -9,7 +9,7 @@ export default function ProcessSection() {
         width: "100vw",
         position: "relative",
         left: "50%",
-        marginLeft: "-50vw",
+        marginLeft: "-50.5vw",
         overflow: "hidden",
         backgroundColor: "#fff",
       }}

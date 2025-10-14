@@ -30,10 +30,10 @@ export default function About({ yacht }) {
           <Typography
             variant="overline"
             sx={{
-              color: "#8B1E2D",
+              color: "#0d1b2a",
               letterSpacing: 2,
-              textTransform: "uppercase",
-              fontWeight: 600,
+              display: "block",
+              mb: 1,
             }}
           >
             ABOUT
