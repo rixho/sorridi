@@ -51,81 +51,153 @@
     }
   },
   {
-    "id": "himare-filikur-journey",
-    "title": "Himarë & Filikur Journey",
-    "bestTime": "June – September",
-    "heroImage": "/destinations/himare/hero.jpg",
-    "description": "Experience the vibrant culture of Himarë and the untouched serenity of Filikur Bay — a journey that blends energy and seclusion.",
+    "id": "filikur-aquarium-gjipe",
+    "title": "Filikur · Akuariumi · Gjipe — Secluded & Unspoiled",
+    "bestTime": "May – September",
+    "heroImage": "/destinations/filikur-aquarium-gjipe/hero.jpg",
+    "description": "Sail into the beating heart of Albania’s wild Riviera, where sculpted cliffs, jade-blue coves and stripped-back silence create a route that still feels genuinely undiscovered. Cruise along the coast on a private yacht, slip into hidden bays like Filikur or Akuarium, and end at the iconic canyon of Gjipe — a place where the sea crashes against raw rock and the mountains fall straight into the water.",
     "locations": [
-      {
-        "id": "himare",
-        "title": "Himarë",
-        "images": [
-          "/itineraries/himare/himare-1.jpg",
-          "/itineraries/himare/himare-2.jpg",
-          "/itineraries/himare/himare-3.jpg"
-        ],
-        "text": "Himarë is a blend of Riviera glamour and authentic Albanian heritage. Golden beaches, lively promenades, and traditional tavernas make it the beating heart of the coast.\n\nStroll along the seafront lined with cafes, explore the old town’s cobbled alleys, or simply relax on sun-soaked beaches. Himarë delivers a balance of energy and authenticity, making it a highlight for travelers who want both vibrancy and culture.",
-        "options": "Perfect for day or weekend yacht charters"
-      },
       {
         "id": "filikur",
         "title": "Filikur Bay",
         "images": [
-          "/itineraries/filikur/filikur-1.jpg",
-          "/itineraries/filikur/filikur-2.jpg"
+          "/destinations/filikur/filikur-1.jpg",
+          "/destinations/filikur/filikur-2.jpg",
+          "/destinations/filikur/filikur-3.jpg"
         ],
-        "text": "Accessible only by yacht, Filikur is one of the Riviera's most secluded coves. Protected by cliffs and lush greenery, it offers crystalline waters and complete tranquility.\n\nAnchor offshore and spend the day swimming in turquoise shallows or snorkeling among schools of colorful fish. With no road access and no crowds, Filikur Bay embodies exclusivity and privacy, making it the ultimate escape for yacht lovers.",
-        "options": "Ideal for private yacht retreats"
+        "text": "A natural amphitheatre carved into the cliffs, Filikur is the kind of anchorage you do not reach by road — only by sea. The water here falls from turquoise to lapis in seconds; the rock walls mute the world into total stillness. Drop anchor, swim in deep glass-clear water, or float under the overhangs where the light turns emerald against the stone.",
+        "options": "Options for daily or weekly yacht charter"
+      },
+      {
+        "id": "aquarium",
+        "title": "Aquarium Bay",
+        "images": [
+          "/destinations/aquarium/aquarium-1.jpg",
+          "/destinations/aquarium/aquarium-2.jpg"
+        ],
+        "text": "Small, enclosed, and unbelievably transparent — this cove is named 'Aquarium' for a reason. Entering by yacht, the bottom is visible as if looking through glass: sea fans, sand ripples, darting fish in slow motion. It is the ideal pause for snorkeling or for simply lying on deck in total acoustic silence.",
+        "options": "Options for daily or weekly yacht charter"
+      },
+      {
+        "id": "gjipe",
+        "title": "Gjipe — The Canyon on the Sea",
+        "images": [
+          "/destinations/gjipe/gjipe-1.jpg",
+          "/destinations/gjipe/gjipe-2.jpg",
+          "/destinations/gjipe/gjipe-3.jpg"
+        ],
+        "text": "Few places anywhere look like Gjipe: a tight slit canyon collapsing into a narrow beach wedged between 80-metre cliffs. Arriving from the sea is the privileged way — no hiking, no crowds, just a straight glide into one of the most dramatic pieces of coast in the Mediterranean.",
+        "options": "Options for daily or weekly yacht charter"
       }
     ],
     "mapMarkers": [
-      { "lat": 40.102, "lng": 19.745, "title": "Himarë" },
-      { "lat": 40.0905, "lng": 19.7300, "title": "Filikur" }
+      { "lat": 40.071, "lng": 19.692, "title": "Filikur Bay" },
+      { "lat": 40.057, "lng": 19.704, "title": "Aquarium Bay" },
+      { "lat": 40.041, "lng": 19.717, "title": "Gjipe Beach" }
     ],
     "cta": {
-      "title": "Sail Himarë & Filikur",
-      "subtitle": "Combine the vibrant energy of Himarë with the untouched seclusion of Filikur for an unforgettable yacht escape.",
-      "button": "Start Your Journey"
+      "title": "Plan Your Riviera Escape",
+      "subtitle": "Secluded pockets, living-glass waters — discover the heart of the wild Riviera.",
+      "button": "Plan Your Trip"
     }
   },
   {
-    "id": "ksamil-tongo-paradise",
-    "title": "Ksamil & Tongo Paradise",
-    "bestTime": "May – October",
-    "heroImage": "/destinations/ksamil/hero.jpg",
-    "description": "Discover Ksamil’s turquoise lagoons and the untouched charm of Tongo Island — a pairing of elegance and wilderness.",
+    "id": "gjipe-dhermi-palase",
+    "title": "Gjipe · Dhërmi · Palasë — Into the Cleanest Blue on the Coast",
+    "bestTime": "May – September",
+    "heroImage": "/destinations/gjipe-dhermi-palase/hero.jpg",
+    "description": "Sail along the high spine of Albania’s Riviera, where the mountains drop naked into the sea and the water holds a glass-blue clarity you can read from the deck. Leave the canyon walls of Gjipe behind and trace the coast toward Dhërmi and Palasë — a strip of open beaches, hidden ledges, and water so clean it glows against the chalk-white stone.",
     "locations": [
       {
-        "id": "ksamil",
-        "title": "Ksamil",
+        "id": "gjipe",
+        "title": "Gjipe — The Raw Counterpoint",
         "images": [
-          "/itineraries/ksamil/ksamil-1.jpg",
-          "/itineraries/ksamil/ksamil-2.jpg"
+          "/destinations/gjipe/gjipe-1.jpg",
+          "/destinations/gjipe/gjipe-2.jpg"
         ],
-        "text": "Ksamil is Albania's crown jewel, famous for its sandy islets and turquoise lagoons. Often compared to Caribbean beaches, it’s perfect for relaxation and exploration.\n\nFamilies love Ksamil for its calm waters and easy access to nearby islets by small boat. Whether you want to sunbathe, swim, or dine at beachfront restaurants, Ksamil offers something for everyone, making it a must-see in the Riviera.",
-        "options": "Family-friendly yacht charters available"
+        "text": "A canyon carved to the sea, Gjipe is the last piece of coast that still arrives unfiltered: vertical walls, deep clean water and no road noise at all. Approaching by yacht puts you directly under the stone face where the light fractures into cobalt — a setting that makes the later refinement of Dhërmi and Palasë feel earned, not expected.",
+        "options": "Options for daily or weekly yacht charter"
       },
       {
-        "id": "tongo",
-        "title": "Tongo Island",
+        "id": "dhermi",
+        "title": "Dhërmi — Where Blue Became the Standard",
         "images": [
-          "/itineraries/tongo/tongo-1.jpg",
-          "/itineraries/tongo/tongo-2.jpg",
-          "/itineraries/tongo/tongo-3.jpg"
+          "/destinations/dhermi/dhermi-1.jpg",
+          "/destinations/dhermi/dhermi-2.jpg"
         ],
-        "text": "Tongo Island offers rocky shores, rich underwater life, and unspoiled surroundings — a castaway-style adventure for those seeking true privacy.\n\nAccessible only by yacht, it’s a destination for snorkeling, diving, and complete relaxation away from the crowds. Tongo embodies the wild, untouched spirit of the Ionian coast — a sanctuary for those wanting to disconnect fully and embrace nature.",
-        "options": "Private day trips or overnight stays by yacht"
+        "text": "Dhërmi is where the Riviera changes register: long bays of neon-blue water over pale sand shelves, the light reflecting off limestone and forcing the sea brighter than anywhere else on the coast. Luxury resorts and nightlife gathered here for that reason — the geography dictated the market.",
+        "options": "Options for daily or weekly yacht charter"
+      },
+      {
+        "id": "palase",
+        "title": "Palasë — The Polished Edge of the Wild",
+        "images": [
+          "/destinations/palase/palase-1.jpg",
+          "/destinations/palase/palase-2.jpg"
+        ],
+        "text": "Wider horizon, cleaner fetch, and one of the most photogenic stretches of open beach in Albania. From the waterline, Palasë reads like a natural amphitheatre: cliffs lifted behind, surf in front, and a strip that looks engineered for light.",
+        "options": "Options for daily or weekly yacht charter"
       }
     ],
     "mapMarkers": [
-      { "lat": 39.7681, "lng": 19.9998, "title": "Ksamil" },
-      { "lat": 39.752, "lng": 20.01, "title": "Tongo Island" }
+      { "lat": 40.041, "lng": 19.717, "title": "Gjipe" },
+      { "lat": 40.144, "lng": 19.632, "title": "Dhërmi" },
+      { "lat": 40.157, "lng": 19.639, "title": "Palasë" }
     ],
     "cta": {
-      "title": "Plan Your Ksamil & Tongo Escape",
-      "subtitle": "From turquoise lagoons to wild island adventures, this itinerary blends luxury with untouched beauty.",
-      "button": "Plan Your Voyage"
+      "title": "Start Your Experience",
+      "subtitle": "Iconic beaches, cobalt shallows, and cliffs cut straight to sea.",
+      "button": "Plan Your Trip"
+    }
+  },
+  {
+    "id": "bunec-krorez-kakome",
+    "title": "Bunec · Krorez · Kakome — The Wild Bay Corridor",
+    "bestTime": "May – September",
+    "heroImage": "/destinations/bunec-krorez-kakome/hero.jpg",
+    "description": "Trace the lower Riviera where the coast loses its polish and returns to first form: steep slopes, stripped-back stone, and water that burns blue against untouched crescents of sand.",
+    "locations": [
+      {
+        "id": "bunec",
+        "title": "Bunec — The Quiet Opening of the Wild Run",
+        "images": [
+          "/destinations/bunec/bunec-1.jpg",
+          "/destinations/bunec/bunec-2.jpg"
+        ],
+        "text": "A calm stretch where the slopes flatten and the beach feels endless. The blue is softest here — an entry to the wild corridor ahead.",
+        "options": "Options for daily or weekly yacht charter"
+      },
+      {
+        "id": "krorez",
+        "title": "Krorez — Bay Preserved by Inaccessibility",
+        "images": [
+          "/destinations/krorez/krorez-1.jpg",
+          "/destinations/krorez/krorez-2.jpg"
+        ],
+        "text": "Krorez has stayed intact because access is difficult: the lack of a clean road has kept its geometry untouched. A narrow inlet into the slope, sand sealed by rock shoulders, and water so clear you can read the bottom from distance.",
+        "options": "Options for daily or weekly yacht charter"
+      },
+      {
+        "id": "kakome",
+        "title": "Kakome — A Second Cove Locked from the Road",
+        "images": [
+          "/destinations/kakome/kakome-1.jpg",
+          "/destinations/kakome/kakome-2.jpg"
+        ],
+        "text": "Kakome is the twin proof of what isolation preserves: another deep-blue basin walled by stone and insulated from crowds by the absence of direct land access.",
+        "options": "Options for daily or weekly yacht charter"
+      }
+    ],
+    "mapMarkers": [
+      { "lat": 40.016, "lng": 19.801, "title": "Bunec" },
+      { "lat": 40.003, "lng": 19.821, "title": "Krorez" },
+      { "lat": 39.982, "lng": 19.835, "title": "Kakome" }
+    ],
+    "cta": {
+      "title": "Plan Your Wild Corridor",
+      "subtitle": "Remote coves, deep clear water, and coastline cut by cliffs.",
+      "button": "Plan Your Trip"
     }
   }
 ]
+
